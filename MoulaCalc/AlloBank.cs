@@ -71,9 +71,9 @@ namespace MoulaCalc
 
         }
 
-        public void InsertAlloBank(string Total, string Date)
+        public void InsertAlloBank(string Total, string Date, long Billet5, long Billet10, long Billet20, long Billet50, long Billet100, long Billet200, long Billet500)
         {
-            string insert = "INSERT INTO AlloBank(Total,Date) VALUES("+ Total + ",'"+ Date + "')";
+            string insert = "INSERT INTO AlloBank(Total,Date,Billet5,Billet10,Billet20,Billet50,Billet100,Billet200,Billet500) VALUES(" + Total + ",'"+ Date + "'," + Billet5 + "," + Billet10 + "," + Billet20 + "," + Billet50 + "," + Billet100 + "," + Billet200 + "," + Billet500 + ")";
             databaseManager.createDbFile();
             databaseManager.createDbConnection();
             databaseManager.executeQuery(insert);

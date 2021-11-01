@@ -69,7 +69,7 @@ namespace MoulaCalc
             dbManager.createDbConnection();
             dbManager.createTables();
             SQLiteConnection conn = dbManager.Connection();
-            SQLiteCommand command = new SQLiteCommand("SELECT Total,Date,Id FROM AlloBank ORDER BY Date DESC", conn);
+            SQLiteCommand command = new SQLiteCommand("SELECT Total,Date,Id,Billet5,Billet10,Billet20,Billet50,Billet100,Billet200,Billet500 FROM AlloBank ORDER BY Date DESC", conn);
             SQLiteDataAdapter sqlda = new SQLiteDataAdapter(command);
             DataSet ds = new();
             sqlda.Fill(ds);

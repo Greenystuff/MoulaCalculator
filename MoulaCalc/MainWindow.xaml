@@ -5,8 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MoulaCalc"
         mc:Ignorable="d"
-        Title="MoulaCalc" Height="350" Width="400" MinHeight="350" MinWidth="400" WindowStartupLocation="CenterScreen">
-    
+        Title="MoulaCalc" Height="500" Width="550" MinHeight="450" MinWidth="500" WindowStartupLocation="CenterScreen">
     <Window.Background>
         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
             <GradientStop Color="#FFE8B8B8" Offset="1"/>
@@ -32,30 +31,30 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <DockPanel Grid.Row="1" HorizontalAlignment="Left" Grid.ColumnSpan="2" Margin="0,0,0,30">
-            <Menu DockPanel.Dock="Top">
-                <MenuItem Header="_Options">
+        <DockPanel Grid.Row="1" Height="Auto" TextBlock.TextAlignment="Center" HorizontalAlignment="Left" Grid.ColumnSpan="2" Margin="0,0,0,50">
+            <Menu DockPanel.Dock="Top" Width="Auto">
+                <MenuItem Header="_Options" TextBlock.FontSize="18" >
                     <MenuItem Header="_Logs" Click="HistoClicked" />
                     <Separator />
                     <MenuItem Header="_Quitter" Click="MenuItem_Exit_Click"/>
                 </MenuItem>
             </Menu>
         </DockPanel>
-        <Label Grid.Row="1" Grid.ColumnSpan="4" VerticalAlignment="Bottom" HorizontalAlignment="Center">Entrez le nombre de billets</Label>
-        <Label Grid.Row="2" HorizontalAlignment="Center" Grid.Column="1">5</Label>
-        <TextBox PreviewTextInput="NumberValidationTextBox" MaxLength="5" x:Name="TextBoxBillet5" Grid.Row="2" Grid.Column="2" TextChanged="TextBoxBillet_TextChanged" TextAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Center" Width="50"/>
-        <Label Grid.Row="3" HorizontalAlignment="Center" Grid.Column="1">10</Label>
-        <TextBox PreviewTextInput="NumberValidationTextBox" MaxLength="5" x:Name="TextBoxBillet10" Grid.Row="3" Grid.Column="2" TextChanged="TextBoxBillet_TextChanged" TextAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Center" Width="50"/>
-        <Label Grid.Row="4" HorizontalAlignment="Center" Grid.Column="1">20</Label>
-        <TextBox PreviewTextInput="NumberValidationTextBox" MaxLength="5" x:Name="TextBoxBillet20" Grid.Row="4" Grid.Column="2" TextChanged="TextBoxBillet_TextChanged" TextAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Center" Width="50"/>
-        <Label Grid.Row="5" HorizontalAlignment="Center" Grid.Column="1">50</Label>
-        <TextBox PreviewTextInput="NumberValidationTextBox" MaxLength="4" x:Name="TextBoxBillet50" Grid.Row="5" Grid.Column="2" TextChanged="TextBoxBillet_TextChanged" TextAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Center" Width="50"/>
-        <Label Grid.Row="6" HorizontalAlignment="Center" Grid.Column="1">100</Label>
-        <TextBox PreviewTextInput="NumberValidationTextBox" MaxLength="3" x:Name="TextBoxBillet100" Grid.Row="6" Grid.Column="2" TextChanged="TextBoxBillet_TextChanged" TextAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Center" Width="50"/>
-        <Label Grid.Row="7" HorizontalAlignment="Center" Grid.Column="1">200</Label>
-        <TextBox PreviewTextInput="NumberValidationTextBox" MaxLength="2" x:Name="TextBoxBillet200" Grid.Row="7" Grid.Column="2" TextChanged="TextBoxBillet_TextChanged" TextAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Center" Width="50"/>
-        <Label Grid.Row="8" HorizontalAlignment="Center" Grid.Column="1">500</Label>
-        <TextBox PreviewTextInput="NumberValidationTextBox" MaxLength="2" x:Name="TextBoxBillet500" Grid.Row="8" Grid.Column="2" TextChanged="TextBoxBillet_TextChanged" TextAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Center" Width="50"/>
+        <Label TextBlock.FontSize="24" Grid.Row="1" Grid.ColumnSpan="4" VerticalAlignment="Bottom" HorizontalAlignment="Center">Entrez le nombre de billets</Label>
+        <Label TextBlock.FontSize="20" Grid.Row="2" HorizontalAlignment="Center" Grid.Column="1">5</Label>
+        <TextBox TextBlock.FontSize="20" PreviewTextInput="NumberValidationTextBox" MaxLength="5" x:Name="TextBoxBillet5" Grid.Row="2" Grid.Column="2" TextChanged="TextBoxBillet_TextChanged" TextAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Center" Width="50"/>
+        <Label TextBlock.FontSize="20" Grid.Row="3" HorizontalAlignment="Center" Grid.Column="1">10</Label>
+        <TextBox TextBlock.FontSize="20" PreviewTextInput="NumberValidationTextBox" MaxLength="5" x:Name="TextBoxBillet10" Grid.Row="3" Grid.Column="2" TextChanged="TextBoxBillet_TextChanged" TextAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Center" Width="50"/>
+        <Label TextBlock.FontSize="20" Grid.Row="4" HorizontalAlignment="Center" Grid.Column="1">20</Label>
+        <TextBox TextBlock.FontSize="20" PreviewTextInput="NumberValidationTextBox" MaxLength="5" x:Name="TextBoxBillet20" Grid.Row="4" Grid.Column="2" TextChanged="TextBoxBillet_TextChanged" TextAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Center" Width="50"/>
+        <Label TextBlock.FontSize="20" Grid.Row="5" HorizontalAlignment="Center" Grid.Column="1">50</Label>
+        <TextBox TextBlock.FontSize="20" PreviewTextInput="NumberValidationTextBox" MaxLength="4" x:Name="TextBoxBillet50" Grid.Row="5" Grid.Column="2" TextChanged="TextBoxBillet_TextChanged" TextAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Center" Width="50"/>
+        <Label TextBlock.FontSize="20" Grid.Row="6" HorizontalAlignment="Center" Grid.Column="1">100</Label>
+        <TextBox TextBlock.FontSize="20" PreviewTextInput="NumberValidationTextBox" MaxLength="3" x:Name="TextBoxBillet100" Grid.Row="6" Grid.Column="2" TextChanged="TextBoxBillet_TextChanged" TextAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Center" Width="50"/>
+        <Label TextBlock.FontSize="20" Grid.Row="7" HorizontalAlignment="Center" Grid.Column="1">200</Label>
+        <TextBox TextBlock.FontSize="20" PreviewTextInput="NumberValidationTextBox" MaxLength="2" x:Name="TextBoxBillet200" Grid.Row="7" Grid.Column="2" TextChanged="TextBoxBillet_TextChanged" TextAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Center" Width="50"/>
+        <Label TextBlock.FontSize="20" Grid.Row="8" HorizontalAlignment="Center" Grid.Column="1">500</Label>
+        <TextBox TextBlock.FontSize="20" PreviewTextInput="NumberValidationTextBox" MaxLength="2" x:Name="TextBoxBillet500" Grid.Row="8" Grid.Column="2" TextChanged="TextBoxBillet_TextChanged" TextAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Center" Width="50"/>
         <Grid Grid.Row="9" Grid.ColumnSpan="4">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="50*" />
@@ -65,7 +64,7 @@
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
             <Button x:Name="TotalResult" Grid.Column="1" Content="Sauvegarder Total\n0 €" Foreground="White" Click="SaveButton_Pressed"
-                    Height="50" VerticalAlignment="Bottom">
+                    Height="75" VerticalAlignment="Bottom">
             <Button.Style>
                 <Style TargetType="{x:Type Button}">
                     <Setter Property="Background" Value="#FF4B2600"/>
@@ -73,7 +72,7 @@
                         <Setter.Value>
                             <ControlTemplate TargetType="{x:Type Button}">
                                 <Border Background="{TemplateBinding Background}">
-                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" TextBlock.TextAlignment="Center"/>
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" TextBlock.TextAlignment="Center" TextBlock.FontSize="20"/>
                                 </Border>
                             </ControlTemplate>
                         </Setter.Value>
@@ -89,8 +88,8 @@
                 </Style>
             </Button.Style>
         </Button>
-            <Button x:Name="NbBilletsBtn" Grid.Column="0" Content="Sauvegarder Nombre de Billets :\n0" Foreground="White" Click="SaveNbBillets_Pressed"
-                    Height="50" VerticalAlignment="Bottom">
+            <Button x:Name="NbBilletsBtn" Grid.Column="0" Content="Sauvegarder l'encours :\n0" Foreground="White" Click="SaveNbBillets_Pressed"
+                    Height="75" VerticalAlignment="Bottom">
                 <Button.Style>
                     <Style TargetType="{x:Type Button}">
                         <Setter Property="Background" Value="#FF4B2600"/>
@@ -98,7 +97,7 @@
                             <Setter.Value>
                                 <ControlTemplate TargetType="{x:Type Button}">
                                     <Border Background="{TemplateBinding Background}">
-                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" TextBlock.TextAlignment="Center"/>
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" TextBlock.TextAlignment="Center" TextBlock.FontSize="20"/>
                                     </Border>
                                 </ControlTemplate>
                             </Setter.Value>

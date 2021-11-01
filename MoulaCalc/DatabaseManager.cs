@@ -63,7 +63,14 @@ namespace MoulaCalc
                 sqlCommand = "CREATE TABLE AlloBank("
                              + "Id INTEGER PRIMARY KEY AUTOINCREMENT,"
                              + "Total NVARCHAR(100) NOT NULL,"
-                             + "Date DATETIME"
+                             + "Date DATETIME,"
+                             + "Billet5 INTEGER,"
+                             + "Billet10 INTEGER,"
+                             + "Billet20 INTEGER,"
+                             + "Billet50 INTEGER,"
+                             + "Billet100 INTEGER,"
+                             + "Billet200 INTEGER,"
+                             + "Billet500 INTEGER"
                              + ");";
                 executeQuery(sqlCommand);
             }

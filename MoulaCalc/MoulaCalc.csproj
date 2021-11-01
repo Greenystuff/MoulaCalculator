@@ -17,8 +17,39 @@
     <TargetFramework>net5.0-windows10.0.19041.0</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
+    <None Remove="img\Billet10.png" />
+    <None Remove="img\Billet100.png" />
+    <None Remove="img\Billet20.png" />
+    <None Remove="img\Billet200.png" />
+    <None Remove="img\Billet5.png" />
+    <None Remove="img\Billet50.png" />
+    <None Remove="img\Billet500.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="img\Billet10.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="img\Billet100.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="img\Billet20.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="img\Billet200.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="img\Billet5.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="img\Billet50.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="img\Billet500.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
     <PackageReference Include="DotNetProjects.WpfToolkit.DataVisualization" Version="6.0.90" />
     <PackageReference Include="System.Data.SQLite" Version="1.0.115" />
   </ItemGroup>
-  <ItemGroup />
 </Project>

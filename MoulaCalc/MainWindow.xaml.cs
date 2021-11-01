@@ -107,7 +107,7 @@ namespace MoulaCalc
             Totalresult = Result5 + Result10 + Result20 + Result50 + Result100 + Result200 + Result500;
             TotalResult.Content = "Sauvegarder Total\n" + Totalresult.ToString() + " €";
             long NbBillets = Result5 / 5 + Result10 / 10 + Result20 / 20 + Result50 / 50 + Result100 / 100 + Result200 / 200 + Result500 / 500;
-            NbBilletsBtn.Content = "Sauvegarder Nombre de Billets :\n" + NbBillets;
+            NbBilletsBtn.Content = "Sauvegarder l'encours :\n" + NbBillets;
         }
 
         private void MenuItem_Exit_Click(object sender, RoutedEventArgs e)
@@ -126,7 +126,7 @@ namespace MoulaCalc
         {
             AlloBank alloBank = new();
             string dt = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
-            alloBank.InsertAlloBank(Totalresult.ToString(), dt);
+            alloBank.InsertAlloBank(Totalresult.ToString(), dt, long.Parse(TextBoxBillet5.Text), long.Parse(TextBoxBillet10.Text), long.Parse(TextBoxBillet20.Text), long.Parse(TextBoxBillet50.Text), long.Parse(TextBoxBillet100.Text), long.Parse(TextBoxBillet200.Text), long.Parse(TextBoxBillet500.Text));
             HistoWindow.UpdateDataGrid();
 
         }
