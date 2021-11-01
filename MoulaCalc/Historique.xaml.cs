@@ -31,6 +31,7 @@ namespace MoulaCalc
         {
             InitializeComponent();
             UpdateDataGrid();
+
         }
 
         private void Return_Pressed(object sender, RoutedEventArgs e)
@@ -40,9 +41,22 @@ namespace MoulaCalc
 
         private void Reset_Database(object sender, RoutedEventArgs e)
         {
-            AlloBank alloBank = new();
-            alloBank.DeleteAlloBank();
-            HistoField.ItemsSource = null;
+
+            if (MessageBox.Show("Voulez vous vraiment effacer la base de données ?",
+                                "Confirmation", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+            {
+                // Close the window
+                AlloBank alloBank = new();
+                alloBank.DeleteAlloBank();
+                ((AreaSeries)StatChart.Series[0]).ItemsSource = null;
+                HistoField.ItemsSource = null;
+                ((AreaSeries)StatChart.Series[0]).Refresh();
+            }
+            else
+            {
+                // Do not close the window
+                
+            }
         }
 
         private void DeleteRows_Cliqued(object sender, RoutedEventArgs e)
@@ -75,15 +89,15 @@ namespace MoulaCalc
             pagingCollectionView = new PagingCollectionView(ds.Tables[0].DefaultView, 12);
             HistoField.ItemsSource = pagingCollectionView;
 
-            
-
             for (int i = 0; i < HistoField.Items.Count; i++)
             {
                 DataRowView dataRowView = (DataRowView)HistoField.Items[i];
                 list.Add(new KeyValuePair<string, long>(dataRowView.Row["Date"].ToString(), long.Parse(dataRowView.Row["Total"].ToString())));
             }
 
+            
             ((AreaSeries)StatChart.Series[0]).ItemsSource = list;
+            ((AreaSeries)StatChart.Series[0]).Refresh();
 
             dbManager.closeDbConnection();
 
@@ -109,7 +123,6 @@ namespace MoulaCalc
         {
             this.pagingCollectionView.MoveToPreviousPage();
         }
-
     }
 
 

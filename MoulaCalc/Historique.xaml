@@ -4,8 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:DVC="clr-namespace:System.Windows.Controls.DataVisualization.Charting;assembly=DotNetProjects.DataVisualization.Toolkit"
-        xmlns:scm="clr-namespace:System.ComponentModel;assembly=WindowsBase"
-        xmlns:local="clr-namespace:MoulaCalc"
+        xmlns:local="clr-namespace:MoulaCalc" xmlns:scm="clr-namespace:System.ComponentModel;assembly=WindowsBase"
         mc:Ignorable="d"
         Title="Historique"
         Height="450"
@@ -35,7 +34,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <TabControl TabStripPlacement="Top" Grid.ColumnSpan="3" Background="{x:Null}" Grid.Row="0">
+        <TabControl TabStripPlacement="Top" Grid.ColumnSpan="3" Background="{x:Null}" Grid.Row="0" BorderThickness="0">
             <TabItem Header="Historique">
                 <Grid>
                     <Grid.RowDefinitions>
@@ -44,7 +43,7 @@
                         <RowDefinition Height="*"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
-                    <DataGrid Name="HistoField" Grid.Row="1" TextBlock.TextAlignment="Center" AutoGenerateColumns="False" MaxHeight="300" VirtualizingStackPanel.IsVirtualizing="False"
+                    <DataGrid CanUserSortColumns="True" Name="HistoField" Grid.Row="1" TextBlock.TextAlignment="Center" AutoGenerateColumns="False" MaxHeight="300" VirtualizingStackPanel.IsVirtualizing="False"
                             HorizontalAlignment="Center" RowHeaderWidth="0" DataGrid.CanUserResizeColumns="False" DataGrid.CanUserResizeRows="False" CanUserAddRows="false" Margin="0,20,0,0">
                         <DataGrid.Columns>
                             <DataGridCheckBoxColumn Header="Supprimer" HeaderStyle="{StaticResource CenterGridHeaderStyle}" IsThreeState="False" CanUserSort="False" CanUserReorder="False">

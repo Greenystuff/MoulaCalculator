@@ -11,8 +11,8 @@ namespace MoulaCalc
 {
     public class PagingCollectionView : CollectionView
     {
-        private readonly IList _innerList;
-        private readonly int _itemsPerPage;
+        public readonly IList _innerList;
+        public readonly int _itemsPerPage;
 
         private int _currentPage = 1;
 
