@@ -1,0 +1,106 @@
+﻿<Window x:Class="MoulaCalc.Historique"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:DVC="clr-namespace:System.Windows.Controls.DataVisualization.Charting;assembly=DotNetProjects.DataVisualization.Toolkit"
+        xmlns:scm="clr-namespace:System.ComponentModel;assembly=WindowsBase"
+        xmlns:local="clr-namespace:MoulaCalc"
+        mc:Ignorable="d"
+        Title="Historique"
+        Height="450"
+        Width="800" 
+        MinHeight="450" 
+        MinWidth="800"
+        WindowStartupLocation="Manual"
+        Left="300"
+        Top="300">
+    <Window.Background>
+        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+            <GradientStop Color="#FFE8B8B8" Offset="1"/>
+            <GradientStop Color="#FFFF8F15" Offset="0.383"/>
+        </LinearGradientBrush>
+    </Window.Background>
+    <Window.Resources>
+        <Style x:Key="CenterGridHeaderStyle" TargetType="DataGridColumnHeader">
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <TabControl TabStripPlacement="Top" Grid.ColumnSpan="3" Background="{x:Null}" Grid.Row="0">
+            <TabItem Header="Historique">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <DataGrid Name="HistoField" Grid.Row="1" TextBlock.TextAlignment="Center" AutoGenerateColumns="False" MaxHeight="300" VirtualizingStackPanel.IsVirtualizing="False"
+                            HorizontalAlignment="Center" RowHeaderWidth="0" DataGrid.CanUserResizeColumns="False" DataGrid.CanUserResizeRows="False" CanUserAddRows="false" Margin="0,20,0,0">
+                        <DataGrid.Columns>
+                            <DataGridCheckBoxColumn Header="Supprimer" HeaderStyle="{StaticResource CenterGridHeaderStyle}" IsThreeState="False" CanUserSort="False" CanUserReorder="False">
+                                <DataGridCheckBoxColumn.ElementStyle>
+                                    <Style TargetType="CheckBox">
+                                        <Setter Property="HorizontalAlignment" Value="Center"/>
+                                    </Style>
+                                </DataGridCheckBoxColumn.ElementStyle>
+                            </DataGridCheckBoxColumn>
+                            <DataGridTextColumn Header="Date" Width="200"  HeaderStyle="{StaticResource CenterGridHeaderStyle}" Binding="{Binding Date, StringFormat=dd/MM/yyyy \HH:mm}" IsReadOnly="True" CanUserReorder="False"/>
+                            <DataGridTextColumn Header="Total" Width="200" HeaderStyle="{StaticResource CenterGridHeaderStyle}" Binding="{Binding Total}" IsReadOnly="True" CanUserReorder="False"/>
+                            <DataGridTextColumn Header="Id" Width="200" HeaderStyle="{StaticResource CenterGridHeaderStyle}" Binding="{Binding Id}" IsReadOnly="True" CanUserReorder="False" Visibility="Hidden"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <Button Grid.Row="2" Grid.ColumnSpan="4" Height="30" Width="100" Content="Previous" Click="OnPreviousClicked" Margin="0,20,150,0" VerticalAlignment="Top"/>
+                    <Button Grid.Row="2" Grid.ColumnSpan="4" Height="30" Width="100" Content="Next" Click="OnNextClicked" Margin="150,20,0,0" VerticalAlignment="Top"/>
+                    <Button x:Name="Supprimer" Grid.Row="3" Grid.ColumnSpan="4" Content="Supprimer" Foreground="White" Height="30" Width="100" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="18" Click="DeleteRows_Cliqued" >
+                        <Button.Style>
+                            <Style TargetType="{x:Type Button}">
+                                <Setter Property="Background" Value="#FF4B2600"/>
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="{x:Type Button}">
+                                            <Border Background="{TemplateBinding Background}">
+                                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#FF1D0D00"/>
+                                    </Trigger>
+                                    <Trigger Property="IsPressed" Value="True">
+                                        <Setter Property="Background" Value="#FF4B2600"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                    </Button>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Stats" >
+                <DVC:Chart  Canvas.Top="80" Canvas.Left="10" Name="StatChart"  
+                            Width="Auto" Height="300" Background="{x:Null}"
+                            LegendTitle="Gains" Margin="0,20,0,0">
+                    <DVC:Chart.Series>
+                        <DVC:AreaSeries  
+                            Title="Moula"  
+                            IndependentValuePath="Key"  
+                            DependentValuePath="Value" >
+                        </DVC:AreaSeries>
+                    </DVC:Chart.Series>
+                </DVC:Chart>
+            </TabItem>
+        </TabControl>
+        <Button x:Name="ResetBtn" Content="Reset" Grid.Row="0" Grid.Column="4" Height="30" Width="80" HorizontalAlignment="Right" VerticalAlignment="Top" Click="Reset_Database" Margin="0,0,0,20"/>
+    </Grid>
+</Window>
