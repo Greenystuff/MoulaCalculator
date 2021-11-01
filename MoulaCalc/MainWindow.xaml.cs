@@ -174,5 +174,10 @@ namespace MoulaCalc
             AlloBank alloBank = new();
             alloBank.InsertNbBillets(Result5 / 5, Result10 / 10, Result20 / 20, Result50 / 50, Result100 / 100, Result200 / 200, Result500 / 500);
         }
+
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
     }
 }

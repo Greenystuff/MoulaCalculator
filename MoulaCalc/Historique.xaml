@@ -4,7 +4,6 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:DVC="clr-namespace:System.Windows.Controls.DataVisualization.Charting;assembly=DotNetProjects.DataVisualization.Toolkit"
-        xmlns:local="clr-namespace:MoulaCalc" xmlns:scm="clr-namespace:System.ComponentModel;assembly=WindowsBase"
         mc:Ignorable="d"
         Title="Historique"
         Height="750"
@@ -36,7 +35,7 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <TabControl TabStripPlacement="Top" Grid.ColumnSpan="3" Background="{x:Null}" Grid.Row="0" BorderThickness="0">
-            <TabItem Header="Historique">
+            <TabItem Header="Historique" TextBlock.FontSize="18">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
@@ -131,7 +130,7 @@
                     </Button>
                 </Grid>
             </TabItem>
-            <TabItem Header="Stats" >
+            <TabItem Header="Stats" TextBlock.FontSize="18">
                 <DVC:Chart  Canvas.Top="80" Canvas.Left="10" Name="StatChart"  
                             Width="Auto" Height="300" Background="{x:Null}"
                             LegendTitle="Gains" Margin="0,20,0,0">
