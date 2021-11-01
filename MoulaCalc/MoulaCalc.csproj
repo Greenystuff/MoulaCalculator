@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <SSDTUnitTestPath Condition="'$(SSDTUnitTestPath)' == ''">$(VsInstallRoot)\Common7\IDE\Extensions\Microsoft\SQLDB</SSDTUnitTestPath>
   </PropertyGroup>
@@ -16,15 +16,7 @@
     <NeutralLanguage>fr</NeutralLanguage>
     <TargetFramework>net5.0-windows10.0.19041.0</TargetFramework>
   </PropertyGroup>
-  <ItemGroup>
-    <None Remove="img\Billet10.png" />
-    <None Remove="img\Billet100.png" />
-    <None Remove="img\Billet20.png" />
-    <None Remove="img\Billet200.png" />
-    <None Remove="img\Billet5.png" />
-    <None Remove="img\Billet50.png" />
-    <None Remove="img\Billet500.png" />
-  </ItemGroup>
+
   <ItemGroup>
     <Content Include="img\Billet10.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
