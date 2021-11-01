@@ -144,6 +144,6 @@
                 </DVC:Chart>
             </TabItem>
         </TabControl>
-        <Button x:Name="ResetBtn" Content="Reset" Grid.Row="0" Grid.Column="4" Height="30" Width="80" HorizontalAlignment="Right" VerticalAlignment="Top" Click="Reset_Database" Margin="0,0,0,20"/>
+        <Button x:Name="ResetBtn" TextBlock.FontSize="20" Content="Reset" Grid.Row="0" Grid.Column="4" Height="35" Width="80" HorizontalAlignment="Right" VerticalAlignment="Top" Click="Reset_Database" Margin="0,0,0,20"/>
     </Grid>
 </Window>
