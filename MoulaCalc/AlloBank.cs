@@ -14,9 +14,44 @@ namespace MoulaCalc
     {
         DatabaseManager databaseManager = new();
 
-        private List<string> Total { get; set; }
-        private List<string> Date { get; set; }
+        private long Billet5 { get; set; }
+        private long Billet10 { get; set; }
+        private long Billet20 { get; set; }
+        private long Billet50 { get; set; }
+        private long Billet100 { get; set; }
+        private long Billet200 { get; set; }
+        private long Billet500 { get; set; }
+        public List<string> Total { get; set; }
+        public List<string> Date { get; set; }
 
+        public long GetBillet5()
+        {
+            return Billet5;
+        }
+        public long GetBillet10()
+        {
+            return Billet10;
+        }
+        public long GetBillet20()
+        {
+            return Billet20;
+        }
+        public long GetBillet50()
+        {
+            return Billet50;
+        }
+        public long GetBillet100()
+        {
+            return Billet100;
+        }
+        public long GetBillet200()
+        {
+            return Billet200;
+        }
+        public long GetBillet500()
+        {
+            return Billet500;
+        }
         public List<string> GetTotal()
         {
             return Total;
@@ -24,6 +59,16 @@ namespace MoulaCalc
         public List<string> GetDate()
         {
             return Date;
+        }
+
+        public void InsertNbBillets(long Billet5, long Billet10, long Billet20, long Billet50, long Billet100, long Billet200, long Billet500)
+        {
+            string insert = "INSERT INTO Encours(Billet5,Billet10,Billet20,Billet50,Billet100,Billet200,Billet500) VALUES(" + Billet5 + "," + Billet10 + "," + Billet20 + "," + Billet50 + "," + Billet100 + "," + Billet200 + "," + Billet500 + ")";
+            databaseManager.createDbFile();
+            databaseManager.createDbConnection();
+            databaseManager.executeQuery(insert);
+            databaseManager.closeDbConnection();
+
         }
 
         public void InsertAlloBank(string Total, string Date)
@@ -78,14 +123,18 @@ namespace MoulaCalc
 
         public void DeleteAlloBank()
         {
-            string cmd = "DELETE FROM AlloBank;";
+            string cmd = "DELETE FROM AlloBank";
             databaseManager.createDbFile();
             databaseManager.createDbConnection();
             databaseManager.executeQuery(cmd);
+            string cmd2 = "DELETE FROM Encours";
+            databaseManager.createDbFile();
+            databaseManager.createDbConnection();
+            databaseManager.executeQuery(cmd2);
             databaseManager.closeDbConnection();
         }
 
-        public void DeleteByRowID(string rowID)
+        public void DeleteByRowID(int rowID)
         {
             string cmd = "DELETE FROM AlloBank WHERE Id="+ rowID;
             databaseManager.createDbFile();

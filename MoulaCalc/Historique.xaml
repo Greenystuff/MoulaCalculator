@@ -43,8 +43,8 @@
                         <RowDefinition Height="*"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
-                    <DataGrid CanUserSortColumns="True" Name="HistoField" Grid.Row="1" TextBlock.TextAlignment="Center" AutoGenerateColumns="False" MaxHeight="300" VirtualizingStackPanel.IsVirtualizing="False"
-                            HorizontalAlignment="Center" RowHeaderWidth="0" DataGrid.CanUserResizeColumns="False" DataGrid.CanUserResizeRows="False" CanUserAddRows="false" Margin="0,20,0,0">
+                    <DataGrid RowDetailsVisibilityMode="VisibleWhenSelected"  CanUserSortColumns="True" Name="HistoField" Grid.Row="1" TextBlock.TextAlignment="Center" AutoGenerateColumns="False" MaxHeight="300" VirtualizingStackPanel.IsVirtualizing="False"
+                            HorizontalAlignment="Center" RowHeaderWidth="0" DataGrid.CanUserResizeColumns="False" DataGrid.CanUserResizeRows="False" CanUserAddRows="false" Margin="0,20,0,0" MouseDown="HideDetails">
                         <DataGrid.Columns>
                             <DataGridCheckBoxColumn Header="Supprimer" HeaderStyle="{StaticResource CenterGridHeaderStyle}" IsThreeState="False" CanUserSort="False" CanUserReorder="False">
                                 <DataGridCheckBoxColumn.ElementStyle>
@@ -57,6 +57,49 @@
                             <DataGridTextColumn Header="Total" Width="200" HeaderStyle="{StaticResource CenterGridHeaderStyle}" Binding="{Binding Total}" IsReadOnly="True" CanUserReorder="False"/>
                             <DataGridTextColumn Header="Id" Width="200" HeaderStyle="{StaticResource CenterGridHeaderStyle}" Binding="{Binding Id}" IsReadOnly="True" CanUserReorder="False" Visibility="Hidden"/>
                         </DataGrid.Columns>
+                        <DataGrid.RowDetailsTemplate>
+                            <DataTemplate>
+                                <Border BorderThickness="0" Background="BlanchedAlmond" Padding="10">
+                                    <Grid HorizontalAlignment="Center" Width="Auto" VerticalAlignment="Center">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>
+                                        </Grid.RowDefinitions>
+
+                                        <TextBlock Grid.Column="0" Grid.Row="0" FontSize="12" Text="5 € : " VerticalAlignment="Center" Margin="10,0,10,0"/>
+                                        <TextBlock Grid.Column="0" Grid.Row="1" FontSize="16" Foreground="MidnightBlue" Text="{Binding Billet5}" VerticalAlignment="Center" Margin="10,0,10,0"/>
+
+                                        <TextBlock Grid.Column="1" Grid.Row="0" FontSize="12" Text="10 € : " VerticalAlignment="Center" Margin="10,0,10,0"/>
+                                        <TextBlock Grid.Column="1" Grid.Row="1" FontSize="16" Foreground="MidnightBlue" Text="{Binding Billet10}" VerticalAlignment="Center" Margin="10,0,10,0"/>
+
+                                        <TextBlock Grid.Column="2" Grid.Row="0" FontSize="12" Text="20 € : " VerticalAlignment="Center" Margin="10,0,10,0"/>
+                                        <TextBlock Grid.Column="2" Grid.Row="1" FontSize="16" Foreground="MidnightBlue" Text="{Binding Billet20}" VerticalAlignment="Center" Margin="10,0,10,0"/>
+
+                                        <TextBlock Grid.Column="3" Grid.Row="0" FontSize="12" Text="50 € : " VerticalAlignment="Center" Margin="10,0,10,0"/>
+                                        <TextBlock Grid.Column="3" Grid.Row="1" FontSize="16" Foreground="MidnightBlue" Text="{Binding Billet50}" VerticalAlignment="Center" Margin="10,0,10,0"/>
+
+                                        <TextBlock Grid.Column="4" Grid.Row="0" FontSize="12" Text="100 € : " VerticalAlignment="Center" Margin="10,0,10,0"/>
+                                        <TextBlock Grid.Column="4" Grid.Row="1" FontSize="16" Foreground="MidnightBlue" Text="{Binding Billet100}" VerticalAlignment="Center" Margin="10,0,10,0"/>
+
+                                        <TextBlock Grid.Column="5" Grid.Row="0" FontSize="12" Text="200 € : " VerticalAlignment="Center" Margin="10,0,10,0"/>
+                                        <TextBlock Grid.Column="5" Grid.Row="1" FontSize="16" Foreground="MidnightBlue" Text="{Binding Billet200}" VerticalAlignment="Center" Margin="10,0,10,0"/>
+
+                                        <TextBlock Grid.Column="6" Grid.Row="0" FontSize="12" Text="500 € : " VerticalAlignment="Center" Margin="10,0,10,0"/>
+                                        <TextBlock Grid.Column="6" Grid.Row="1" FontSize="16" Foreground="MidnightBlue" Text="{Binding Billet500}" VerticalAlignment="Center" Margin="10,0,10,0"/>
+
+                                    </Grid>
+                                </Border>
+                            </DataTemplate>
+                        </DataGrid.RowDetailsTemplate>
                     </DataGrid>
                     <Button Grid.Row="2" Grid.ColumnSpan="4" Height="30" Width="100" Content="Previous" Click="OnPreviousClicked" Margin="0,20,150,0" VerticalAlignment="Top"/>
                     <Button Grid.Row="2" Grid.ColumnSpan="4" Height="30" Width="100" Content="Next" Click="OnNextClicked" Margin="150,20,0,0" VerticalAlignment="Top"/>

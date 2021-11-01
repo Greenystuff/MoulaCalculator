@@ -70,7 +70,7 @@ namespace MoulaCalc
             if (!checkIfExist("Encours"))
             {
                 sqlCommand = "CREATE TABLE Encours("
-                             + "Id INTEGER PRIMARY KEY AUTOINCREMENT,"
+                             + "Id INTEGER PRIMARY KEY,"
                              + "Billet5 INTEGER,"
                              + "Billet10 INTEGER,"
                              + "Billet20 INTEGER,"

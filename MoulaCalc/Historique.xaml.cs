@@ -26,17 +26,11 @@ namespace MoulaCalc
 
         DatabaseManager dbManager = new();
         private PagingCollectionView pagingCollectionView;
-        public static List<KeyValuePair<string, long>> list = new List<KeyValuePair<string, long>>();
         public Historique()
         {
             InitializeComponent();
             UpdateDataGrid();
-
-        }
-
-        private void Return_Pressed(object sender, RoutedEventArgs e)
-        {
-           Close();
+            HistoField.SelectedIndex = -1;
         }
 
         private void Reset_Database(object sender, RoutedEventArgs e)
@@ -45,17 +39,11 @@ namespace MoulaCalc
             if (MessageBox.Show("Voulez vous vraiment effacer la base de données ?",
                                 "Confirmation", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
             {
-                // Close the window
                 AlloBank alloBank = new();
                 alloBank.DeleteAlloBank();
                 ((AreaSeries)StatChart.Series[0]).ItemsSource = null;
                 HistoField.ItemsSource = null;
                 ((AreaSeries)StatChart.Series[0]).Refresh();
-            }
-            else
-            {
-                // Do not close the window
-                
             }
         }
 
@@ -81,7 +69,7 @@ namespace MoulaCalc
             dbManager.createDbConnection();
             dbManager.createTables();
             SQLiteConnection conn = dbManager.Connection();
-            SQLiteCommand command = new SQLiteCommand("SELECT Total,Date,Id FROM AlloBank", conn);
+            SQLiteCommand command = new SQLiteCommand("SELECT Total,Date,Id FROM AlloBank ORDER BY Date DESC", conn);
             SQLiteDataAdapter sqlda = new SQLiteDataAdapter(command);
             DataSet ds = new();
             sqlda.Fill(ds);
@@ -89,12 +77,12 @@ namespace MoulaCalc
             pagingCollectionView = new PagingCollectionView(ds.Tables[0].DefaultView, 12);
             HistoField.ItemsSource = pagingCollectionView;
 
-            for (int i = 0; i < HistoField.Items.Count; i++)
+            List<KeyValuePair<string, long>> list = new List<KeyValuePair<string, long>>();
+            for (int i = HistoField.Items.Count - 1; i >= 0; i--)
             {
                 DataRowView dataRowView = (DataRowView)HistoField.Items[i];
                 list.Add(new KeyValuePair<string, long>(dataRowView.Row["Date"].ToString(), long.Parse(dataRowView.Row["Total"].ToString())));
             }
-
             
             ((AreaSeries)StatChart.Series[0]).ItemsSource = list;
             ((AreaSeries)StatChart.Series[0]).Refresh();
@@ -106,12 +94,8 @@ namespace MoulaCalc
 
         public void DeleteSelectedRows(int rowID)
         {
-            string cmd = "DELETE FROM AlloBank WHERE Id=" + rowID;
-            // MessageBox.Show(cmd);
-            dbManager.createDbFile();
-            dbManager.createDbConnection();
-            dbManager.executeQuery(cmd);
-            dbManager.closeDbConnection();
+            AlloBank alloBank = new();
+            alloBank.DeleteByRowID(rowID);
         }
 
         private void OnNextClicked(object sender, RoutedEventArgs e)
@@ -122,6 +106,11 @@ namespace MoulaCalc
         private void OnPreviousClicked(object sender, RoutedEventArgs e)
         {
             this.pagingCollectionView.MoveToPreviousPage();
+        }
+
+        private void HideDetails(object sender, MouseButtonEventArgs e)
+        {
+            HistoField.SelectedIndex = -1;
         }
     }
 

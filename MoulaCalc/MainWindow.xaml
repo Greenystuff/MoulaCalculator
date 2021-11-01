@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MoulaCalc"
         mc:Ignorable="d"
-        Title="MoulaCalc" Height="300" Width="300" MinHeight="300" MinWidth="200" WindowStartupLocation="CenterScreen">
+        Title="MoulaCalc" Height="350" Width="400" MinHeight="350" MinWidth="400" WindowStartupLocation="CenterScreen">
     
     <Window.Background>
         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -56,8 +56,16 @@
         <TextBox PreviewTextInput="NumberValidationTextBox" MaxLength="2" x:Name="TextBoxBillet200" Grid.Row="7" Grid.Column="2" TextChanged="TextBoxBillet_TextChanged" TextAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Center" Width="50"/>
         <Label Grid.Row="8" HorizontalAlignment="Center" Grid.Column="1">500</Label>
         <TextBox PreviewTextInput="NumberValidationTextBox" MaxLength="2" x:Name="TextBoxBillet500" Grid.Row="8" Grid.Column="2" TextChanged="TextBoxBillet_TextChanged" TextAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Center" Width="50"/>
-
-        <Button x:Name="TotalResult" Grid.Row="9" Grid.ColumnSpan="4" Content="0 €" Foreground="White" Click="SaveButton_Pressed">
+        <Grid Grid.Row="9" Grid.ColumnSpan="4">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="50*" />
+                <ColumnDefinition Width="50*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Button x:Name="TotalResult" Grid.Column="1" Content="Sauvegarder Total\n0 €" Foreground="White" Click="SaveButton_Pressed"
+                    Height="50" VerticalAlignment="Bottom">
             <Button.Style>
                 <Style TargetType="{x:Type Button}">
                     <Setter Property="Background" Value="#FF4B2600"/>
@@ -65,7 +73,7 @@
                         <Setter.Value>
                             <ControlTemplate TargetType="{x:Type Button}">
                                 <Border Background="{TemplateBinding Background}">
-                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" TextBlock.TextAlignment="Center"/>
                                 </Border>
                             </ControlTemplate>
                         </Setter.Value>
@@ -81,5 +89,31 @@
                 </Style>
             </Button.Style>
         </Button>
+            <Button x:Name="NbBilletsBtn" Grid.Column="0" Content="Sauvegarder Nombre de Billets :\n0" Foreground="White" Click="SaveNbBillets_Pressed"
+                    Height="50" VerticalAlignment="Bottom">
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="Background" Value="#FF4B2600"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <Border Background="{TemplateBinding Background}">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" TextBlock.TextAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#FF1D0D00"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Background" Value="#FF4B2600"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+        </Grid>
     </Grid>
 </Window>
