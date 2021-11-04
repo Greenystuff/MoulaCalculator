@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SQLite;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -32,6 +33,7 @@ namespace MoulaCalc
         long Result100 = 0;
         long Result200 = 0;
         long Result500 = 0;
+        string Monnaie = "0";
         long Totalresult = 0;
         Historique HistoWindow = new Historique();
         public MainWindow()
@@ -43,6 +45,13 @@ namespace MoulaCalc
         private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
         {
             Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
+        }
+
+        private void DecimalValidationTextBox(object sender, TextCompositionEventArgs e)
+        {
+            
+            Regex regex = new Regex("[^0-9.,]+");
             e.Handled = regex.IsMatch(e.Text);
         }
 
@@ -104,10 +113,21 @@ namespace MoulaCalc
             {
                 Result500 = 0;
             }
+            if (TextBoxMonnaie.Text != "")
+            {
+                Monnaie = TextBoxMonnaie.Text;
+            }
+            else
+            {
+                Monnaie = "0 €";
+            }
+
+
+
             Totalresult = Result5 + Result10 + Result20 + Result50 + Result100 + Result200 + Result500;
-            TotalResult.Content = "Sauvegarder Total\n" + Totalresult.ToString() + " €";
+            TotalResult.Content = "Sortie banque\n" + Totalresult.ToString() + " €";
             long NbBillets = Result5 / 5 + Result10 / 10 + Result20 / 20 + Result50 / 50 + Result100 / 100 + Result200 / 200 + Result500 / 500;
-            NbBilletsBtn.Content = "Sauvegarder l'encours :\n" + NbBillets;
+            NbBilletsBtn.Content = "Sauvegarder la sacoche :\n" + NbBillets + " billets";
         }
 
         private void MenuItem_Exit_Click(object sender, RoutedEventArgs e)
@@ -124,7 +144,7 @@ namespace MoulaCalc
 
         private void SaveButton_Pressed(object sender, RoutedEventArgs e)
         {
-            if (MessageBox.Show("Avez-vous vraiment finit la session AlloB ?",
+            if (MessageBox.Show("êtes-vous sûr de vouloir faire une sortie banque ?",
                                 "Confirmation", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
             {
                 AlloBank alloBank = new();
@@ -140,8 +160,7 @@ namespace MoulaCalc
             DatabaseManager databaseManager = new();
             databaseManager.createDbFile();
             databaseManager.createDbConnection();
-            databaseManager.createTables();
-            string select = "SELECT Billet5, Billet10, Billet20, Billet50, Billet100, Billet200, Billet500 FROM Encours";
+            string select = "SELECT Billet5, Billet10, Billet20, Billet50, Billet100, Billet200, Billet500, Monnaie FROM Encours";
             SQLiteDataReader reader = databaseManager.executeSelectQuery(select);
             long Billet5 = new();
             long Billet10 = new();
@@ -150,6 +169,7 @@ namespace MoulaCalc
             long Billet100 = new();
             long Billet200 = new();
             long Billet500 = new();
+            string Monnaie = "0 €";
             while (reader.Read())
             {
                 Billet5 = long.Parse(reader["Billet5"].ToString());
@@ -159,7 +179,9 @@ namespace MoulaCalc
                 Billet100 = long.Parse(reader["Billet100"].ToString());
                 Billet200 = long.Parse(reader["Billet200"].ToString());
                 Billet500 = long.Parse(reader["Billet500"].ToString());
+                Monnaie = reader["Monnaie"].ToString();
             }
+            
             TextBoxBillet5.Text = Billet5.ToString();
             TextBoxBillet10.Text = Billet10.ToString();
             TextBoxBillet20.Text = Billet20.ToString();
@@ -167,6 +189,7 @@ namespace MoulaCalc
             TextBoxBillet100.Text = Billet100.ToString();
             TextBoxBillet200.Text = Billet200.ToString();
             TextBoxBillet500.Text = Billet500.ToString();
+            TextBoxMonnaie.Text = Monnaie + " €";
             reader.Close();
             databaseManager.closeDbConnection();
 
@@ -175,12 +198,48 @@ namespace MoulaCalc
         private void SaveNbBillets_Pressed(object sender, RoutedEventArgs e)
         {
             AlloBank alloBank = new();
-            alloBank.InsertNbBillets(Result5 / 5, Result10 / 10, Result20 / 20, Result50 / 50, Result100 / 100, Result200 / 200, Result500 / 500);
+            alloBank.InsertNbBillets(Result5 / 5, Result10 / 10, Result20 / 20, Result50 / 50, Result100 / 100, Result200 / 200, Result500 / 500, Monnaie);
         }
 
         private void Window_Closed(object sender, EventArgs e)
         {
             Application.Current.Shutdown();
+        }
+
+        private void FillEmptyTextBlocks(object sender, RoutedEventArgs e)
+        {
+            if (TextBoxBillet5.Text == "")
+            {
+                TextBoxBillet5.Text = "0";
+            }
+            if (TextBoxBillet10.Text == "")
+            {
+                TextBoxBillet10.Text = "0";
+            }
+            if (TextBoxBillet20.Text == "")
+            {
+                TextBoxBillet20.Text = "0";
+            }
+            if (TextBoxBillet50.Text == "")
+            {
+                TextBoxBillet50.Text = "0";
+            }
+            if (TextBoxBillet100.Text == "")
+            {
+                TextBoxBillet100.Text = "0";
+            }
+            if (TextBoxBillet200.Text == "")
+            {
+                TextBoxBillet200.Text = "0";
+            }
+            if (TextBoxBillet500.Text == "")
+            {
+                TextBoxBillet500.Text = "0";
+            }
+            if (TextBoxMonnaie.Text == "")
+            {
+                TextBoxMonnaie.Text = "0";
+            }
         }
     }
 }

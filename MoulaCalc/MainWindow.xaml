@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MoulaCalc"
         mc:Ignorable="d"
-        Title="MoulaCalc" Height="500" Width="550" MinHeight="450" MinWidth="500" WindowStartupLocation="CenterScreen" Closed="Window_Closed">
+        Title="MoulaCalc" Height="470" Width="500" MinHeight="470" MinWidth="500" WindowStartupLocation="CenterScreen" Closed="Window_Closed">
     <Window.Background>
         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
             <GradientStop Color="#FFE8B8B8" Offset="1"/>
@@ -42,19 +42,21 @@
         </DockPanel>
         <Label TextBlock.FontSize="24" Grid.Row="1" Grid.ColumnSpan="4" VerticalAlignment="Bottom" HorizontalAlignment="Center">Entrez le nombre de billets</Label>
         <Label TextBlock.FontSize="20" Grid.Row="2" HorizontalAlignment="Center" Grid.Column="1">5</Label>
-        <TextBox TextBlock.FontSize="20" PreviewTextInput="NumberValidationTextBox" MaxLength="5" x:Name="TextBoxBillet5" Grid.Row="2" Grid.Column="2" TextChanged="TextBoxBillet_TextChanged" TextAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Center" Width="50"/>
+        <TextBox TextBlock.FontSize="20" PreviewTextInput="NumberValidationTextBox" MaxLength="5" x:Name="TextBoxBillet5" Grid.Row="2" Grid.Column="2" TextChanged="TextBoxBillet_TextChanged" TextAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Center" Width="50" LostFocus="FillEmptyTextBlocks"/>
         <Label TextBlock.FontSize="20" Grid.Row="3" HorizontalAlignment="Center" Grid.Column="1">10</Label>
-        <TextBox TextBlock.FontSize="20" PreviewTextInput="NumberValidationTextBox" MaxLength="5" x:Name="TextBoxBillet10" Grid.Row="3" Grid.Column="2" TextChanged="TextBoxBillet_TextChanged" TextAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Center" Width="50"/>
+        <TextBox TextBlock.FontSize="20" PreviewTextInput="NumberValidationTextBox" MaxLength="5" x:Name="TextBoxBillet10" Grid.Row="3" Grid.Column="2" TextChanged="TextBoxBillet_TextChanged" TextAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Center" Width="50" LostFocus="FillEmptyTextBlocks"/>
         <Label TextBlock.FontSize="20" Grid.Row="4" HorizontalAlignment="Center" Grid.Column="1">20</Label>
-        <TextBox TextBlock.FontSize="20" PreviewTextInput="NumberValidationTextBox" MaxLength="5" x:Name="TextBoxBillet20" Grid.Row="4" Grid.Column="2" TextChanged="TextBoxBillet_TextChanged" TextAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Center" Width="50"/>
+        <TextBox TextBlock.FontSize="20" PreviewTextInput="NumberValidationTextBox" MaxLength="5" x:Name="TextBoxBillet20" Grid.Row="4" Grid.Column="2" TextChanged="TextBoxBillet_TextChanged" TextAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Center" Width="50" LostFocus="FillEmptyTextBlocks"/>
         <Label TextBlock.FontSize="20" Grid.Row="5" HorizontalAlignment="Center" Grid.Column="1">50</Label>
-        <TextBox TextBlock.FontSize="20" PreviewTextInput="NumberValidationTextBox" MaxLength="4" x:Name="TextBoxBillet50" Grid.Row="5" Grid.Column="2" TextChanged="TextBoxBillet_TextChanged" TextAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Center" Width="50"/>
+        <TextBox TextBlock.FontSize="20" PreviewTextInput="NumberValidationTextBox" MaxLength="4" x:Name="TextBoxBillet50" Grid.Row="5" Grid.Column="2" TextChanged="TextBoxBillet_TextChanged" TextAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Center" Width="50" LostFocus="FillEmptyTextBlocks"/>
         <Label TextBlock.FontSize="20" Grid.Row="6" HorizontalAlignment="Center" Grid.Column="1">100</Label>
-        <TextBox TextBlock.FontSize="20" PreviewTextInput="NumberValidationTextBox" MaxLength="3" x:Name="TextBoxBillet100" Grid.Row="6" Grid.Column="2" TextChanged="TextBoxBillet_TextChanged" TextAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Center" Width="50"/>
+        <TextBox TextBlock.FontSize="20" PreviewTextInput="NumberValidationTextBox" MaxLength="3" x:Name="TextBoxBillet100" Grid.Row="6" Grid.Column="2" TextChanged="TextBoxBillet_TextChanged" TextAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Center" Width="50" LostFocus="FillEmptyTextBlocks"/>
         <Label TextBlock.FontSize="20" Grid.Row="7" HorizontalAlignment="Center" Grid.Column="1">200</Label>
-        <TextBox TextBlock.FontSize="20" PreviewTextInput="NumberValidationTextBox" MaxLength="2" x:Name="TextBoxBillet200" Grid.Row="7" Grid.Column="2" TextChanged="TextBoxBillet_TextChanged" TextAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Center" Width="50"/>
+        <TextBox TextBlock.FontSize="20" PreviewTextInput="NumberValidationTextBox" MaxLength="2" x:Name="TextBoxBillet200" Grid.Row="7" Grid.Column="2" TextChanged="TextBoxBillet_TextChanged" TextAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Center" Width="50" LostFocus="FillEmptyTextBlocks"/>
         <Label TextBlock.FontSize="20" Grid.Row="8" HorizontalAlignment="Center" Grid.Column="1">500</Label>
-        <TextBox TextBlock.FontSize="20" PreviewTextInput="NumberValidationTextBox" MaxLength="2" x:Name="TextBoxBillet500" Grid.Row="8" Grid.Column="2" TextChanged="TextBoxBillet_TextChanged" TextAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Center" Width="50"/>
+        <TextBox TextBlock.FontSize="20" PreviewTextInput="NumberValidationTextBox" MaxLength="2" x:Name="TextBoxBillet500" Grid.Row="8" Grid.Column="2" TextChanged="TextBoxBillet_TextChanged" TextAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Center" Width="50" LostFocus="FillEmptyTextBlocks"/>
+        <Label TextBlock.FontSize="20" Grid.Row="7" HorizontalAlignment="Right" Grid.Column="3" Width="90">Monnaie</Label>
+        <TextBox TextBlock.FontSize="20" PreviewTextInput="DecimalValidationTextBox" MaxLength="8" x:Name="TextBoxMonnaie" Grid.Row="8" Grid.Column="3" TextChanged="TextBoxBillet_TextChanged" TextAlignment="Center" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="90" LostFocus="FillEmptyTextBlocks"/>
         <Grid Grid.Row="9" Grid.ColumnSpan="4">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="50*" />
@@ -63,7 +65,7 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
-            <Button x:Name="TotalResult" Grid.Column="1" Content="Sauvegarder Total\n0 €" Foreground="White" Click="SaveButton_Pressed"
+            <Button x:Name="TotalResult" Grid.Column="1" Grid.Row="0" Content="Sortie banque\n0 €" Foreground="White" Click="SaveButton_Pressed"
                     Height="75" VerticalAlignment="Bottom">
             <Button.Style>
                 <Style TargetType="{x:Type Button}">
@@ -88,7 +90,7 @@
                 </Style>
             </Button.Style>
         </Button>
-            <Button x:Name="NbBilletsBtn" Grid.Column="0" Content="Sauvegarder l'encours :\n0" Foreground="White" Click="SaveNbBillets_Pressed"
+            <Button x:Name="NbBilletsBtn" Grid.Column="0" Grid.Row="0" Content="Sauvegarder la sacoche :\n0 billet" Foreground="White" Click="SaveNbBillets_Pressed"
                     Height="75" VerticalAlignment="Bottom">
                 <Button.Style>
                     <Style TargetType="{x:Type Button}">

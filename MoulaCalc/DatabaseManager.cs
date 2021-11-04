@@ -84,7 +84,8 @@ namespace MoulaCalc
                              + "Billet50 INTEGER,"
                              + "Billet100 INTEGER,"
                              + "Billet200 INTEGER,"
-                             + "Billet500 INTEGER"
+                             + "Billet500 INTEGER,"
+                             + "Monnaie TEXT"
                              + ");";
                 executeQuery(sqlCommand);
             }

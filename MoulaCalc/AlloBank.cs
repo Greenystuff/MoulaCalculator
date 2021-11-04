@@ -21,6 +21,7 @@ namespace MoulaCalc
         private long Billet100 { get; set; }
         private long Billet200 { get; set; }
         private long Billet500 { get; set; }
+        private string Monnaie { get; set; }
         public List<string> Total { get; set; }
         public List<string> Date { get; set; }
 
@@ -52,6 +53,10 @@ namespace MoulaCalc
         {
             return Billet500;
         }
+        public string GetMonnaie()
+        {
+            return Monnaie;
+        }
         public List<string> GetTotal()
         {
             return Total;
@@ -61,9 +66,9 @@ namespace MoulaCalc
             return Date;
         }
 
-        public void InsertNbBillets(long Billet5, long Billet10, long Billet20, long Billet50, long Billet100, long Billet200, long Billet500)
+        public void InsertNbBillets(long Billet5, long Billet10, long Billet20, long Billet50, long Billet100, long Billet200, long Billet500, string Monnaie)
         {
-            string insert = "INSERT INTO Encours(Billet5,Billet10,Billet20,Billet50,Billet100,Billet200,Billet500) VALUES(" + Billet5 + "," + Billet10 + "," + Billet20 + "," + Billet50 + "," + Billet100 + "," + Billet200 + "," + Billet500 + ")";
+            string insert = "INSERT INTO Encours(Billet5,Billet10,Billet20,Billet50,Billet100,Billet200,Billet500,Monnaie) VALUES(" + Billet5 + "," + Billet10 + "," + Billet20 + "," + Billet50 + "," + Billet100 + "," + Billet200 + "," + Billet500 + ",'" + Monnaie + "')";
             databaseManager.createDbFile();
             databaseManager.createDbConnection();
             databaseManager.executeQuery(insert);
