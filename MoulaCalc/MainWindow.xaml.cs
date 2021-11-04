@@ -122,8 +122,6 @@ namespace MoulaCalc
                 Monnaie = "0 €";
             }
 
-
-
             Totalresult = Result5 + Result10 + Result20 + Result50 + Result100 + Result200 + Result500;
             TotalResult.Content = "Sortie banque\n" + Totalresult.ToString() + " €";
             long NbBillets = Result5 / 5 + Result10 / 10 + Result20 / 20 + Result50 / 50 + Result100 / 100 + Result200 / 200 + Result500 / 500;
