@@ -44,7 +44,7 @@
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
                     <DataGrid RowDetailsVisibilityMode="VisibleWhenSelected"  CanUserSortColumns="True" Name="HistoField" Grid.Row="1" TextBlock.TextAlignment="Center" TextBlock.FontSize="18" AutoGenerateColumns="False" VirtualizingStackPanel.IsVirtualizing="False"
-                            HorizontalAlignment="Center" RowHeaderWidth="0" DataGrid.CanUserResizeColumns="False" DataGrid.CanUserResizeRows="False" CanUserAddRows="false" Margin="0,20,0,0" MouseDown="HideDetails">
+                            HorizontalAlignment="Center" SelectionMode="Single" AllowDrop="False" RowHeaderWidth="0" DataGrid.CanUserResizeColumns="False" DataGrid.CanUserResizeRows="False" CanUserAddRows="false" Margin="0,20,0,0" MouseDown="HideDetails">
                         <DataGrid.Columns>
                             <DataGridCheckBoxColumn Header="Supprimer" HeaderStyle="{StaticResource CenterGridHeaderStyle}" IsThreeState="False" CanUserSort="False" CanUserReorder="False">
                                 <DataGridCheckBoxColumn.ElementStyle>
@@ -55,7 +55,7 @@
                                 </DataGridCheckBoxColumn.ElementStyle>
                             </DataGridCheckBoxColumn>
                             <DataGridTextColumn Header="Date" Width="400" HeaderStyle="{StaticResource CenterGridHeaderStyle}" Binding="{Binding Date, StringFormat=dd/MM/yyyy \HH:mm}" IsReadOnly="True" CanUserReorder="False"/>
-                            <DataGridTextColumn Header="Total" Width="400" HeaderStyle="{StaticResource CenterGridHeaderStyle}" Binding="{Binding Total}" IsReadOnly="True" CanUserReorder="False"/>
+                            <DataGridTextColumn Header="Total" Width="400" HeaderStyle="{StaticResource CenterGridHeaderStyle}" Binding="{Binding Total, StringFormat={} {0:C} €}" IsReadOnly="True" CanUserReorder="False"/>
                             <DataGridTextColumn Header="Id" HeaderStyle="{StaticResource CenterGridHeaderStyle}" Binding="{Binding Id}" IsReadOnly="True" CanUserReorder="False" Visibility="Hidden"/>
                         </DataGrid.Columns>
                         <DataGrid.RowDetailsTemplate>

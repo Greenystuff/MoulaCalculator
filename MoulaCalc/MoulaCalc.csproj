@@ -10,7 +10,6 @@
   </PropertyGroup>
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net5.0-windows</TargetFramework>
     <UseWPF>true</UseWPF>
     <ApplicationIcon>moulaCalc.ico</ApplicationIcon>
     <NeutralLanguage>fr</NeutralLanguage>
