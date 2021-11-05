@@ -15,7 +15,7 @@
     {
         "Entry"
         {
-        "MsmKey" = "8:_0A66C5CAC5A54D258664B75B7E8CCF2D"
+        "MsmKey" = "8:_082D3F3F587D42FBBF7B397A85531223"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -50,6 +50,14 @@
             "PrerequisitesLocation" = "2:1"
             "Url" = "8:"
             "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.7.2"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.7.2 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.7.2"
+                    }
+                }
             }
         }
         "Release"
@@ -74,6 +82,14 @@
             "PrerequisitesLocation" = "2:1"
             "Url" = "8:"
             "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.7.2"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.7.2 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.7.2"
+                    }
+                }
             }
         }
     }
@@ -183,7 +199,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:MoulaCalculator"
         "ProductCode" = "8:{621621AD-C6D7-472D-839A-B370F9716747}"
-        "PackageCode" = "8:{F5CDEFCA-E55F-4838-8586-5CE7C15BC5F6}"
+        "PackageCode" = "8:{A7D4682C-29B1-4E84-8012-05EB0E8D18A2}"
         "UpgradeCode" = "8:{32C39BE8-8563-44F2-8B4F-E60D09D0D691}"
         "AspNetVersion" = "8:2.0.50727.0"
         "RestartWWWService" = "11:FALSE"
@@ -303,18 +319,18 @@
         }
         "Shortcut"
         {
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_E8D4E051EFA54A3895D1743E4DFF7151"
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_10CB1EE220C64EED967ACD64C52B8225"
             {
-            "Name" = "8:Moula Calculator"
+            "Name" = "8:Shortcut to Éléments de publication from MoulaCalc (Active)"
             "Arguments" = "8:"
             "Description" = "8:"
             "ShowCmd" = "3:1"
             "IconIndex" = "3:0"
             "Transitive" = "11:FALSE"
-            "Target" = "8:_0A66C5CAC5A54D258664B75B7E8CCF2D"
-            "Folder" = "8:_7095DACCAE8E44EFB0666E3F0581E6A1"
+            "Target" = "8:_082D3F3F587D42FBBF7B397A85531223"
+            "Folder" = "8:_099A76F048EA4CBDAD99AA701D96FC12"
             "WorkingFolder" = "8:_099A76F048EA4CBDAD99AA701D96FC12"
-            "Icon" = "8:_43F9A011403245C78312841D94C0D453"
+            "Icon" = "8:"
             "Feature" = "8:"
             }
         }
@@ -716,9 +732,9 @@
         }
         "ProjectOutput"
         {
-            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_0A66C5CAC5A54D258664B75B7E8CCF2D"
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_082D3F3F587D42FBBF7B397A85531223"
             {
-            "SourcePath" = "8:..\\MoulaCalc\\obj\\Debug\\net5.0-windows10.0.19041.0\\apphost.exe"
+            "SourcePath" = "8:..\\MoulaCalc\\obj\\Release\\net5.0-windows10.0.19041.0\\apphost.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_099A76F048EA4CBDAD99AA701D96FC12"

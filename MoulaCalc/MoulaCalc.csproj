@@ -43,4 +43,9 @@
     <PackageReference Include="DotNetProjects.WpfToolkit.DataVisualization" Version="6.0.90" />
     <PackageReference Include="System.Data.SQLite" Version="1.0.115" />
   </ItemGroup>
+  <ItemGroup>
+    <Compile Update="AlloBank.cs">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Compile>
+  </ItemGroup>
 </Project>
