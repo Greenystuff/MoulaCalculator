@@ -24,6 +24,10 @@
             <Setter Property="HorizontalContentAlignment" Value="Center"/>
             <Setter Property="FontSize" Value="22"/>
         </Style>
+        <Style x:Key="{x:Type ToolTip}" TargetType="{x:Type ToolTip}">
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+        </Style>
     </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
@@ -44,9 +48,9 @@
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
                     <DataGrid RowDetailsVisibilityMode="VisibleWhenSelected"  CanUserSortColumns="True" Name="HistoField" Grid.Row="1" TextBlock.TextAlignment="Center" TextBlock.FontSize="18" AutoGenerateColumns="False" VirtualizingStackPanel.IsVirtualizing="False"
-                            HorizontalAlignment="Center" SelectionMode="Single" AllowDrop="False" RowHeaderWidth="0" DataGrid.CanUserResizeColumns="False" DataGrid.CanUserResizeRows="False" CanUserAddRows="false" Margin="0,20,0,0" MouseDown="HideDetails">
+                            HorizontalAlignment="Center" SelectionMode="Single" AllowDrop="False" RowHeaderWidth="0" DataGrid.CanUserResizeColumns="False" DataGrid.CanUserResizeRows="False" CanUserAddRows="false" Margin="0,20,0,0" MouseDown="HideDetails" BeginningEdit="Grid_BeginningEdit">
                         <DataGrid.Columns>
-                            <DataGridCheckBoxColumn Header="Supprimer" HeaderStyle="{StaticResource CenterGridHeaderStyle}" IsThreeState="False" CanUserSort="False" CanUserReorder="False">
+                            <DataGridCheckBoxColumn Header="Supprimer" HeaderStyle="{StaticResource CenterGridHeaderStyle}" IsThreeState="False" CanUserSort="False" CanUserReorder="False" CanUserResize="False" >
                                 <DataGridCheckBoxColumn.ElementStyle>
                                     <Style TargetType="CheckBox">
                                         <Setter Property="HorizontalAlignment" Value="Center"/>
@@ -133,12 +137,42 @@
             <TabItem Header="Stats" TextBlock.FontSize="18">
                 <DVC:Chart  Canvas.Top="80" Canvas.Left="10" Name="StatChart"  
                             Width="Auto" Height="300" Background="{x:Null}"
-                            LegendTitle="Gains" Margin="0,20,0,0">
+                            LegendTitle="Gains" BorderThickness="0">
                     <DVC:Chart.Series>
                         <DVC:AreaSeries  
-                            Title="Moula"  
+                            Title="Moula"
                             IndependentValuePath="Key"  
-                            DependentValuePath="Value" >
+                            DependentValuePath="Value">
+                            <DVC:AreaSeries.LegendItemStyle >
+                                <Style TargetType="DVC:LegendItem">
+                                    <Setter  Property="Visibility" Value="Hidden"/>
+                                </Style>
+                            </DVC:AreaSeries.LegendItemStyle>
+                            <DVC:AreaSeries.DataPointStyle>
+                                <Style TargetType="DVC:AreaDataPoint">
+                                    <Setter Property="Background" Value="OrangeRed" ></Setter>
+                                    <Setter Property="Width" Value="10" />
+                                    <Setter Property="Height" Value="10" />
+                                    <Setter Property="ToolTip" Value="{Binding Value}"/>
+                                    <Setter Property="ToolTip.Cursor" Value="Hand"/>
+                                    <Setter Property="ToolTipService.Placement" Value="Mouse"/>
+                                    <Setter Property="ToolTipService.InitialShowDelay" Value="0"/>
+                                    <Setter Property="ToolTip.FontWeight" Value="Bold"/>
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <ControlTemplate TargetType="DVC:AreaDataPoint">
+                                                <Grid>
+                                                    <Ellipse Fill="Maroon"/>
+                                                    <Canvas Visibility="Hidden">
+                                                        <TextBlock FontWeight="Bold" 
+                                                                    Text="{Binding Value}"/>
+                                                    </Canvas>
+                                                </Grid>
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Style>
+                            </DVC:AreaSeries.DataPointStyle>
                         </DVC:AreaSeries>
                     </DVC:Chart.Series>
                 </DVC:Chart>
