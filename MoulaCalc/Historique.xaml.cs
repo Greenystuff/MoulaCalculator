@@ -88,8 +88,6 @@ namespace MoulaCalc
             ((AreaSeries)StatChart.Series[0]).Refresh();
 
             dbManager.closeDbConnection();
-
-            
         }
 
         public void DeleteSelectedRows(int rowID)

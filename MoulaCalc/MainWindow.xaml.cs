@@ -167,7 +167,7 @@ namespace MoulaCalc
             long Billet100 = new();
             long Billet200 = new();
             long Billet500 = new();
-            string Monnaie = "0 €";
+            string Monnaie = "0";
             while (reader.Read())
             {
                 Billet5 = long.Parse(reader["Billet5"].ToString());
