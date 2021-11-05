@@ -114,6 +114,12 @@ namespace MoulaCalc
         }
     }
 
-
+    private void Grid_BeginningEdit(object sender, DataGridBeginningEditEventArgs e)
+    {
+        //// Have to do this in the unusual case where the border of the cell gets selected
+        //// and causes a crash 'EditItem is not allowed'
+        e.Cancel = true;
+        HistoField.SelectedIndex = -1;
+    }
 }
 
