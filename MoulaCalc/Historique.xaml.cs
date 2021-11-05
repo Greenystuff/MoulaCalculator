@@ -83,13 +83,13 @@ namespace MoulaCalc
                 DataRowView dataRowView = (DataRowView)HistoField.Items[i];
                 list.Add(new KeyValuePair<string, long>(dataRowView.Row["Date"].ToString(), long.Parse(dataRowView.Row["Total"].ToString())));
             }
-            
+
             ((AreaSeries)StatChart.Series[0]).ItemsSource = list;
             ((AreaSeries)StatChart.Series[0]).Refresh();
 
             dbManager.closeDbConnection();
 
-            
+
         }
 
         public void DeleteSelectedRows(int rowID)
@@ -112,8 +112,14 @@ namespace MoulaCalc
         {
             HistoField.SelectedIndex = -1;
         }
+
+        private void Grid_BeginningEdit(object sender, DataGridBeginningEditEventArgs e)
+        {
+            //// Have to do this in the unusual case where the border of the cell gets selected
+            //// and causes a crash 'EditItem is not allowed'
+            e.Cancel = true;
+            HistoField.SelectedIndex = -1;
+        }
     }
-
-
 }
 
