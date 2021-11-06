@@ -213,10 +213,6 @@ namespace MoulaCalc
             {
                 TextBoxBillet500.Text = "0";
             }
-            if (TextBoxMonnaie.Text == "")
-            {
-                TextBoxMonnaie.Text = "0";
-            }
         }
     }
 }

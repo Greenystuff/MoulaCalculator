@@ -42,19 +42,19 @@
         </DockPanel>
         <Label TextBlock.FontSize="24" Grid.Row="1" Grid.ColumnSpan="4" VerticalAlignment="Bottom" HorizontalAlignment="Center">Entrez le nombre de billets</Label>
         <Label TextBlock.FontSize="20" Grid.Row="2" HorizontalAlignment="Center" Grid.Column="1">5</Label>
-        <TextBox TextBlock.FontSize="20" PreviewTextInput="NumberValidationTextBox" MaxLength="5" x:Name="TextBoxBillet5" Grid.Row="2" Grid.Column="2" TextChanged="TextBoxBillet_TextChanged" TextAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Center" Width="50"/>
+        <TextBox TextBlock.FontSize="20" PreviewTextInput="NumberValidationTextBox" MaxLength="5" x:Name="TextBoxBillet5" Grid.Row="2" Grid.Column="2" TextChanged="TextBoxBillet_TextChanged" TextAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Center" Width="50" LostFocus="FillEmptyTextBlocks"/>
         <Label TextBlock.FontSize="20" Grid.Row="3" HorizontalAlignment="Center" Grid.Column="1">10</Label>
-        <TextBox TextBlock.FontSize="20" PreviewTextInput="NumberValidationTextBox" MaxLength="5" x:Name="TextBoxBillet10" Grid.Row="3" Grid.Column="2" TextChanged="TextBoxBillet_TextChanged" TextAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Center" Width="50"/>
+        <TextBox TextBlock.FontSize="20" PreviewTextInput="NumberValidationTextBox" MaxLength="5" x:Name="TextBoxBillet10" Grid.Row="3" Grid.Column="2" TextChanged="TextBoxBillet_TextChanged" TextAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Center" Width="50" LostFocus="FillEmptyTextBlocks"/>
         <Label TextBlock.FontSize="20" Grid.Row="4" HorizontalAlignment="Center" Grid.Column="1">20</Label>
-        <TextBox TextBlock.FontSize="20" PreviewTextInput="NumberValidationTextBox" MaxLength="5" x:Name="TextBoxBillet20" Grid.Row="4" Grid.Column="2" TextChanged="TextBoxBillet_TextChanged" TextAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Center" Width="50"/>
+        <TextBox TextBlock.FontSize="20" PreviewTextInput="NumberValidationTextBox" MaxLength="5" x:Name="TextBoxBillet20" Grid.Row="4" Grid.Column="2" TextChanged="TextBoxBillet_TextChanged" TextAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Center" Width="50" LostFocus="FillEmptyTextBlocks"/>
         <Label TextBlock.FontSize="20" Grid.Row="5" HorizontalAlignment="Center" Grid.Column="1">50</Label>
-        <TextBox TextBlock.FontSize="20" PreviewTextInput="NumberValidationTextBox" MaxLength="4" x:Name="TextBoxBillet50" Grid.Row="5" Grid.Column="2" TextChanged="TextBoxBillet_TextChanged" TextAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Center" Width="50"/>
+        <TextBox TextBlock.FontSize="20" PreviewTextInput="NumberValidationTextBox" MaxLength="4" x:Name="TextBoxBillet50" Grid.Row="5" Grid.Column="2" TextChanged="TextBoxBillet_TextChanged" TextAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Center" Width="50" LostFocus="FillEmptyTextBlocks"/>
         <Label TextBlock.FontSize="20" Grid.Row="6" HorizontalAlignment="Center" Grid.Column="1">100</Label>
-        <TextBox TextBlock.FontSize="20" PreviewTextInput="NumberValidationTextBox" MaxLength="3" x:Name="TextBoxBillet100" Grid.Row="6" Grid.Column="2" TextChanged="TextBoxBillet_TextChanged" TextAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Center" Width="50"/>
+        <TextBox TextBlock.FontSize="20" PreviewTextInput="NumberValidationTextBox" MaxLength="3" x:Name="TextBoxBillet100" Grid.Row="6" Grid.Column="2" TextChanged="TextBoxBillet_TextChanged" TextAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Center" Width="50" LostFocus="FillEmptyTextBlocks"/>
         <Label TextBlock.FontSize="20" Grid.Row="7" HorizontalAlignment="Center" Grid.Column="1">200</Label>
-        <TextBox TextBlock.FontSize="20" PreviewTextInput="NumberValidationTextBox" MaxLength="2" x:Name="TextBoxBillet200" Grid.Row="7" Grid.Column="2" TextChanged="TextBoxBillet_TextChanged" TextAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Center" Width="50"/>
+        <TextBox TextBlock.FontSize="20" PreviewTextInput="NumberValidationTextBox" MaxLength="2" x:Name="TextBoxBillet200" Grid.Row="7" Grid.Column="2" TextChanged="TextBoxBillet_TextChanged" TextAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Center" Width="50" LostFocus="FillEmptyTextBlocks"/>
         <Label TextBlock.FontSize="20" Grid.Row="8" HorizontalAlignment="Center" Grid.Column="1">500</Label>
-        <TextBox TextBlock.FontSize="20" PreviewTextInput="NumberValidationTextBox" MaxLength="2" x:Name="TextBoxBillet500" Grid.Row="8" Grid.Column="2" TextChanged="TextBoxBillet_TextChanged" TextAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Center" Width="50"/>
+        <TextBox TextBlock.FontSize="20" PreviewTextInput="NumberValidationTextBox" MaxLength="2" x:Name="TextBoxBillet500" Grid.Row="8" Grid.Column="2" TextChanged="TextBoxBillet_TextChanged" TextAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Center" Width="50" LostFocus="FillEmptyTextBlocks"/>
         <Grid Grid.Row="9" Grid.ColumnSpan="4">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="50*" />
