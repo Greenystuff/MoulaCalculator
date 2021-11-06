@@ -182,5 +182,41 @@ namespace MoulaCalc
         {
             Application.Current.Shutdown();
         }
+
+        private void FillEmptyTextBlocks(object sender, RoutedEventArgs e)
+        {
+            if (TextBoxBillet5.Text == "")
+            {
+                TextBoxBillet5.Text = "0";
+            }
+            if (TextBoxBillet10.Text == "")
+            {
+                TextBoxBillet10.Text = "0";
+            }
+            if (TextBoxBillet20.Text == "")
+            {
+                TextBoxBillet20.Text = "0";
+            }
+            if (TextBoxBillet50.Text == "")
+            {
+                TextBoxBillet50.Text = "0";
+            }
+            if (TextBoxBillet100.Text == "")
+            {
+                TextBoxBillet100.Text = "0";
+            }
+            if (TextBoxBillet200.Text == "")
+            {
+                TextBoxBillet200.Text = "0";
+            }
+            if (TextBoxBillet500.Text == "")
+            {
+                TextBoxBillet500.Text = "0";
+            }
+            if (TextBoxMonnaie.Text == "")
+            {
+                TextBoxMonnaie.Text = "0";
+            }
+        }
     }
 }
