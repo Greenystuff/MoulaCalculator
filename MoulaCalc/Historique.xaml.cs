@@ -57,7 +57,8 @@ namespace MoulaCalc
                 if ((bool)mycheckbox.IsChecked)
                 {
                     int Id = Int32.Parse(dataRowView.Row["Id"].ToString());
-                    DeleteSelectedRows(Id);
+                    AlloBank alloBank = new();
+                    alloBank.DeleteByRowID(Id);
                 }
             }
             UpdateDataGrid();
@@ -88,12 +89,6 @@ namespace MoulaCalc
             ((AreaSeries)StatChart.Series[0]).Refresh();
 
             dbManager.CloseDbConnection();
-        }
-
-        public void DeleteSelectedRows(int rowID)
-        {
-            AlloBank alloBank = new();
-            alloBank.DeleteByRowID(rowID);
         }
 
         private void OnNextClicked(object sender, RoutedEventArgs e)
