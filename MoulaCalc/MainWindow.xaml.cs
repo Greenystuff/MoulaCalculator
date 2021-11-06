@@ -149,6 +149,8 @@ namespace MoulaCalc
                 string dt = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
                 alloBank.InsertAlloBank(Totalresult.ToString(), dt, long.Parse(TextBoxBillet5.Text), long.Parse(TextBoxBillet10.Text), long.Parse(TextBoxBillet20.Text), long.Parse(TextBoxBillet50.Text), long.Parse(TextBoxBillet100.Text), long.Parse(TextBoxBillet200.Text), long.Parse(TextBoxBillet500.Text));
                 HistoWindow.UpdateDataGrid();
+                alloBank.DeleteNbBillets();
+                InitNbBilletsAndDB();
             }
         }
 
