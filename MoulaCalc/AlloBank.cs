@@ -69,28 +69,28 @@ namespace MoulaCalc
         public void InsertNbBillets(long Billet5, long Billet10, long Billet20, long Billet50, long Billet100, long Billet200, long Billet500, string Monnaie)
         {
             string insert = "INSERT INTO Encours(Billet5,Billet10,Billet20,Billet50,Billet100,Billet200,Billet500,Monnaie) VALUES(" + Billet5 + "," + Billet10 + "," + Billet20 + "," + Billet50 + "," + Billet100 + "," + Billet200 + "," + Billet500 + ",'" + Monnaie + "')";
-            databaseManager.createDbFile();
-            databaseManager.createDbConnection();
-            databaseManager.executeQuery(insert);
-            databaseManager.closeDbConnection();
+            databaseManager.CreateDbFile();
+            databaseManager.CreateDbConnection();
+            databaseManager.ExecuteQuery(insert);
+            databaseManager.CloseDbConnection();
 
         }
 
         public void InsertAlloBank(string Total, string Date, long Billet5, long Billet10, long Billet20, long Billet50, long Billet100, long Billet200, long Billet500)
         {
             string insert = "INSERT INTO AlloBank(Total,Date,Billet5,Billet10,Billet20,Billet50,Billet100,Billet200,Billet500) VALUES(" + Total + ",'"+ Date + "'," + Billet5 + "," + Billet10 + "," + Billet20 + "," + Billet50 + "," + Billet100 + "," + Billet200 + "," + Billet500 + ")";
-            databaseManager.createDbFile();
-            databaseManager.createDbConnection();
-            databaseManager.executeQuery(insert);
-            databaseManager.closeDbConnection();
+            databaseManager.CreateDbFile();
+            databaseManager.CreateDbConnection();
+            databaseManager.ExecuteQuery(insert);
+            databaseManager.CloseDbConnection();
         }
 
         public void SelectAllAlloBank()
         {
             string select = "SELECT Total, Date FROM AlloBank";
-            databaseManager.createDbFile();
-            databaseManager.createDbConnection();
-            SQLiteDataReader reader = databaseManager.executeSelectQuery(select);
+            databaseManager.CreateDbFile();
+            databaseManager.CreateDbConnection();
+            SQLiteDataReader reader = databaseManager.ExecuteSelectQuery(select);
             Total = new();
             Date = new();
             while (reader.Read())
@@ -100,15 +100,15 @@ namespace MoulaCalc
             }
             reader.Close();
 
-            databaseManager.closeDbConnection();
+            databaseManager.CloseDbConnection();
         }
 
         public void SelectAlloBankByTotal(string VarTotal)
         {
             string select = "SELECT Total, Date FROM AlloBank WHERE Total=" + VarTotal;
-            databaseManager.createDbFile();
-            databaseManager.createDbConnection();
-            SQLiteDataReader reader = databaseManager.executeSelectQuery(select);
+            databaseManager.CreateDbFile();
+            databaseManager.CreateDbConnection();
+            SQLiteDataReader reader = databaseManager.ExecuteSelectQuery(select);
             Total = new();
             Date = new();
             while (reader.Read())
@@ -118,7 +118,7 @@ namespace MoulaCalc
             }
             reader.Close();
 
-            databaseManager.closeDbConnection();
+            databaseManager.CloseDbConnection();
         }
 
             public void UpdateAlloBank()
@@ -129,32 +129,32 @@ namespace MoulaCalc
         public void DeleteAlloBank()
         {
             string cmd = "DELETE FROM AlloBank";
-            databaseManager.createDbFile();
-            databaseManager.createDbConnection();
-            databaseManager.executeQuery(cmd);
+            databaseManager.CreateDbFile();
+            databaseManager.CreateDbConnection();
+            databaseManager.ExecuteQuery(cmd);
             string cmd2 = "DELETE FROM Encours";
-            databaseManager.createDbFile();
-            databaseManager.createDbConnection();
-            databaseManager.executeQuery(cmd2);
-            databaseManager.closeDbConnection();
+            databaseManager.CreateDbFile();
+            databaseManager.CreateDbConnection();
+            databaseManager.ExecuteQuery(cmd2);
+            databaseManager.CloseDbConnection();
         }
 
         public void DeleteNbBillets()
         {
             string cmd = "DELETE FROM Encours";
-            databaseManager.createDbFile();
-            databaseManager.createDbConnection();
-            databaseManager.executeQuery(cmd);
-            databaseManager.closeDbConnection();
+            databaseManager.CreateDbFile();
+            databaseManager.CreateDbConnection();
+            databaseManager.ExecuteQuery(cmd);
+            databaseManager.CloseDbConnection();
         }
 
         public void DeleteByRowID(int rowID)
         {
             string cmd = "DELETE FROM AlloBank WHERE Id="+ rowID;
-            databaseManager.createDbFile();
-            databaseManager.createDbConnection();
-            databaseManager.executeQuery(cmd);
-            databaseManager.closeDbConnection();
+            databaseManager.CreateDbFile();
+            databaseManager.CreateDbConnection();
+            databaseManager.ExecuteQuery(cmd);
+            databaseManager.CloseDbConnection();
         }
     }
 }

@@ -15,11 +15,11 @@ namespace MoulaCalc
     {
         SQLiteConnection dbConnection;
         SQLiteCommand command;
-        string sqlCommand;
+        private string sqlCommand;
         string dbPath = Environment.CurrentDirectory + "\\DB";
-        string dbFilePath;
+        private string dbFilePath;
 
-        public void createDbFile()
+        public void CreateDbFile()
         {
             if (!string.IsNullOrEmpty(dbPath) && !Directory.Exists(dbPath))
             {
@@ -34,7 +34,7 @@ namespace MoulaCalc
             }
         }
 
-        public string createDbConnection()
+        public string CreateDbConnection()
         {
             string strCon = string.Format("Data Source={0}", dbFilePath);
             dbConnection = new SQLiteConnection(strCon);
@@ -52,13 +52,13 @@ namespace MoulaCalc
             return dbConnection;
         }
 
-        public void closeDbConnection() {
+        public void CloseDbConnection() {
             dbConnection.Close();
         }
 
-        public void createTables()
+        public void CreateTables()
         {
-            if (!checkIfExist("AlloBank"))
+            if (!CheckIfExist("AlloBank"))
             {
                 sqlCommand = "CREATE TABLE AlloBank("
                              + "Id INTEGER PRIMARY KEY AUTOINCREMENT,"
@@ -72,9 +72,9 @@ namespace MoulaCalc
                              + "Billet200 INTEGER,"
                              + "Billet500 INTEGER"
                              + ");";
-                executeQuery(sqlCommand);
+                ExecuteQuery(sqlCommand);
             }
-            if (!checkIfExist("Encours"))
+            if (!CheckIfExist("Encours"))
             {
                 sqlCommand = "CREATE TABLE Encours("
                              + "Id INTEGER PRIMARY KEY,"
@@ -87,11 +87,11 @@ namespace MoulaCalc
                              + "Billet500 INTEGER,"
                              + "Monnaie TEXT"
                              + ");";
-                executeQuery(sqlCommand);
+                ExecuteQuery(sqlCommand);
             }
         }
 
-        public bool checkIfExist(string tableName)
+        public bool CheckIfExist(string tableName)
         {
             command.CommandText = "SELECT name FROM sqlite_master WHERE name='" + tableName + "'";
             var result = command.ExecuteScalar();
@@ -99,14 +99,14 @@ namespace MoulaCalc
             return result != null && result.ToString() == tableName ? true : false;
         }
 
-        public void executeQuery(string sqlCommand)
+        public void ExecuteQuery(string sqlCommand)
         {
             SQLiteCommand triggerCommand = dbConnection.CreateCommand();
             triggerCommand.CommandText = sqlCommand;
             triggerCommand.ExecuteNonQuery();
         }
 
-        public bool checkIfTableContainsData(string tableName)
+        public bool CheckIfTableContainsData(string tableName)
         {
             command.CommandText = "SELECT count(*) FROM " + tableName;
             var result = command.ExecuteScalar();
@@ -114,7 +114,7 @@ namespace MoulaCalc
             return Convert.ToInt32(result) > 0 ? true : false;
         }
 
-        public SQLiteDataReader executeSelectQuery(string select)
+        public SQLiteDataReader ExecuteSelectQuery(string select)
         {
             SQLiteCommand triggerCommand = dbConnection.CreateCommand();
             triggerCommand.CommandText = select;

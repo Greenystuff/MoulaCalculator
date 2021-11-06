@@ -26,16 +26,16 @@ namespace MoulaCalc
 
     public partial class MainWindow : Window
     {
-        long Result5 = 0;
-        long Result10 = 0;
-        long Result20 = 0;
-        long Result50 = 0;
-        long Result100 = 0;
-        long Result200 = 0;
-        long Result500 = 0;
-        string Monnaie = "0";
-        long Totalresult = 0;
-        Historique HistoWindow = new Historique();
+        private long Result5 = 0;
+        private long Result10 = 0;
+        private long Result20 = 0;
+        private long Result50 = 0;
+        private long Result100 = 0;
+        private long Result200 = 0;
+        private long Result500 = 0;
+        private string Monnaie = "0";
+        private long Totalresult = 0;
+        private Historique HistoWindow = new();
         public MainWindow()
         {
             InitializeComponent();
@@ -44,14 +44,14 @@ namespace MoulaCalc
 
         private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
         {
-            Regex regex = new Regex("[^0-9]+");
+            Regex regex = new("[^0-9]+");
             e.Handled = regex.IsMatch(e.Text);
         }
 
         private void DecimalValidationTextBox(object sender, TextCompositionEventArgs e)
         {
             
-            Regex regex = new Regex("[^0-9.,]+");
+            Regex regex = new("[^0-9.,]+");
             e.Handled = regex.IsMatch(e.Text);
         }
 
@@ -135,7 +135,7 @@ namespace MoulaCalc
 
         private void HistoClicked(object sender, RoutedEventArgs e)
         {
-            HistoWindow = new Historique();
+            HistoWindow = new();
             HistoWindow.Owner = this;
             HistoWindow.Show();
         }
@@ -158,10 +158,10 @@ namespace MoulaCalc
         {
 
             DatabaseManager databaseManager = new();
-            databaseManager.createDbFile();
-            databaseManager.createDbConnection();
+            databaseManager.CreateDbFile();
+            databaseManager.CreateDbConnection();
             string select = "SELECT Billet5, Billet10, Billet20, Billet50, Billet100, Billet200, Billet500, Monnaie FROM Encours";
-            SQLiteDataReader reader = databaseManager.executeSelectQuery(select);
+            SQLiteDataReader reader = databaseManager.ExecuteSelectQuery(select);
             long Billet5 = new();
             long Billet10 = new();
             long Billet20 = new();
@@ -191,7 +191,7 @@ namespace MoulaCalc
             TextBoxBillet500.Text = Billet500.ToString();
             TextBoxMonnaie.Text = Monnaie + " €";
             reader.Close();
-            databaseManager.closeDbConnection();
+            databaseManager.CloseDbConnection();
 
         }
 

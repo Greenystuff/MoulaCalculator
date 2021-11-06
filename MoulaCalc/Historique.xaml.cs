@@ -65,9 +65,9 @@ namespace MoulaCalc
 
         public void UpdateDataGrid()
         {
-            dbManager.createDbFile();
-            dbManager.createDbConnection();
-            dbManager.createTables();
+            dbManager.CreateDbFile();
+            dbManager.CreateDbConnection();
+            dbManager.CreateTables();
             SQLiteConnection conn = dbManager.Connection();
             SQLiteCommand command = new SQLiteCommand("SELECT Total,Date,Id,Billet5,Billet10,Billet20,Billet50,Billet100,Billet200,Billet500 FROM AlloBank ORDER BY Date DESC", conn);
             SQLiteDataAdapter sqlda = new SQLiteDataAdapter(command);
@@ -87,7 +87,7 @@ namespace MoulaCalc
             ((AreaSeries)StatChart.Series[0]).ItemsSource = list;
             ((AreaSeries)StatChart.Series[0]).Refresh();
 
-            dbManager.closeDbConnection();
+            dbManager.CloseDbConnection();
         }
 
         public void DeleteSelectedRows(int rowID)
