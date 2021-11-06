@@ -134,6 +134,15 @@ namespace MoulaCalc
             databaseManager.closeDbConnection();
         }
 
+        public void DeleteNbBillets()
+        {
+            string cmd = "DELETE FROM Encours";
+            databaseManager.createDbFile();
+            databaseManager.createDbConnection();
+            databaseManager.executeQuery(cmd);
+            databaseManager.closeDbConnection();
+        }
+
         public void DeleteByRowID(int rowID)
         {
             string cmd = "DELETE FROM AlloBank WHERE Id="+ rowID;
