@@ -94,9 +94,9 @@ namespace MoulaCalc
         public bool CheckIfExist(string tableName)
         {
             command.CommandText = "SELECT name FROM sqlite_master WHERE name='" + tableName + "'";
-            var result = command.ExecuteScalar();
+            object result = command.ExecuteScalar();
 
-            return result != null && result.ToString() == tableName ? true : false;
+            return result != null && result.ToString() == tableName;
         }
 
         public void ExecuteQuery(string sqlCommand)
@@ -111,7 +111,7 @@ namespace MoulaCalc
             command.CommandText = "SELECT count(*) FROM " + tableName;
             var result = command.ExecuteScalar();
 
-            return Convert.ToInt32(result) > 0 ? true : false;
+            return Convert.ToInt32(result) > 0;
         }
 
         public SQLiteDataReader ExecuteSelectQuery(string select)

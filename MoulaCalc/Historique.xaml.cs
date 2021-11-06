@@ -69,15 +69,15 @@ namespace MoulaCalc
             dbManager.CreateDbConnection();
             dbManager.CreateTables();
             SQLiteConnection conn = dbManager.Connection();
-            SQLiteCommand command = new SQLiteCommand("SELECT Total,Date,Id,Billet5,Billet10,Billet20,Billet50,Billet100,Billet200,Billet500 FROM AlloBank ORDER BY Date DESC", conn);
-            SQLiteDataAdapter sqlda = new SQLiteDataAdapter(command);
+            SQLiteCommand command = new("SELECT Total,Date,Id,Billet5,Billet10,Billet20,Billet50,Billet100,Billet200,Billet500 FROM AlloBank ORDER BY Date DESC", conn);
+            SQLiteDataAdapter sqlda = new(command);
             DataSet ds = new();
             sqlda.Fill(ds);
 
             pagingCollectionView = new PagingCollectionView(ds.Tables[0].DefaultView, 12);
             HistoField.ItemsSource = pagingCollectionView;
 
-            List<KeyValuePair<string, long>> list = new List<KeyValuePair<string, long>>();
+            List<KeyValuePair<string, long>> list = new();
             for (int i = HistoField.Items.Count - 1; i >= 0; i--)
             {
                 DataRowView dataRowView = (DataRowView)HistoField.Items[i];
