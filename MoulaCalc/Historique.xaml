@@ -108,30 +108,67 @@
                     </DataGrid>
                     <Button Grid.Row="2" TextBlock.FontSize="20" Grid.ColumnSpan="4" Height="40" Width="100" Content="Previous" Click="OnPreviousClicked" Margin="0,20,150,0" VerticalAlignment="Top"/>
                     <Button Grid.Row="2" TextBlock.FontSize="20" Grid.ColumnSpan="4" Height="40" Width="100" Content="Next" Click="OnNextClicked" Margin="150,20,0,0" VerticalAlignment="Top"/>
-                    <Button x:Name="Supprimer" Grid.Row="3" Grid.ColumnSpan="4" TextBlock.FontSize="20" Content="Supprimer" Foreground="White" Height="40" Width="100" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="18" Click="DeleteRows_Cliqued" >
-                        <Button.Style>
-                            <Style TargetType="{x:Type Button}">
-                                <Setter Property="Background" Value="#FF4B2600"/>
-                                <Setter Property="Template">
-                                    <Setter.Value>
-                                        <ControlTemplate TargetType="{x:Type Button}">
-                                            <Border Background="{TemplateBinding Background}">
-                                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                            </Border>
-                                        </ControlTemplate>
-                                    </Setter.Value>
-                                </Setter>
-                                <Style.Triggers>
-                                    <Trigger Property="IsMouseOver" Value="True">
-                                        <Setter Property="Background" Value="#FF1D0D00"/>
-                                    </Trigger>
-                                    <Trigger Property="IsPressed" Value="True">
-                                        <Setter Property="Background" Value="#FF4B2600"/>
-                                    </Trigger>
-                                </Style.Triggers>
-                            </Style>
-                        </Button.Style>
-                    </Button>
+                    
+                    <StackPanel Orientation="Vertical"
+                                Grid.Row="3"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Bottom">
+                        <StackPanel Grid.Row="3"
+                                    Orientation="Horizontal"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Bottom"
+                                    Margin="0,0,0,10">
+                            <TextBlock Text="Total :"
+                                       FontSize="22"
+                                       Margin="0,0,5,0"
+                                       FontWeight="Bold"/>
+                            <TextBlock Text="0 €"
+                                       x:Name="totalLogTxt"
+                                       FontSize="22"
+                                       Margin="5,0,0,0" />
+                        </StackPanel>
+                        <Button x:Name="Supprimer"
+                                TextBlock.FontSize="20"
+                                Content="Supprimer"
+                                Foreground="White"
+                                Height="40"
+                                Width="100"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Bottom"
+                                FontSize="18"
+                                Click="DeleteRows_Cliqued">
+                            <Button.Style>
+                                <Style TargetType="{x:Type Button}">
+                                    <Setter Property="Background"
+                                            Value="#FF4B2600" />
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <ControlTemplate TargetType="{x:Type Button}">
+                                                <Border Background="{TemplateBinding Background}">
+                                                    <ContentPresenter HorizontalAlignment="Center"
+                                                                      VerticalAlignment="Center" />
+                                                </Border>
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver"
+                                                 Value="True">
+                                            <Setter Property="Background"
+                                                    Value="#FF1D0D00" />
+                                        </Trigger>
+                                        <Trigger Property="IsPressed"
+                                                 Value="True">
+                                            <Setter Property="Background"
+                                                    Value="#FF4B2600" />
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Button.Style>
+                        </Button>
+                    </StackPanel>
+                    
+                    
                 </Grid>
             </TabItem>
             <TabItem Header="Stats" TextBlock.FontSize="18">

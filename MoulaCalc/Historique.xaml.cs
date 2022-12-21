@@ -87,6 +87,14 @@ namespace MoulaCalc
             ((AreaSeries)StatChart.Series[0]).ItemsSource = list;
             ((AreaSeries)StatChart.Series[0]).Refresh();
 
+            SQLiteDataReader reader = dbManager.executeSelectQuery("SELECT Total FROM AlloBank");
+            float totalBank = 0;
+            while(reader.Read())
+            {
+                totalBank += float.Parse(reader["Total"].ToString());
+            }
+
+            totalLogTxt.Text= totalBank.ToString() + " €";
             dbManager.closeDbConnection();
 
 
