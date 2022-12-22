@@ -1,7 +1,9 @@
-﻿using System;
+﻿using MoulaCalc.Properties;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SQLite;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -108,6 +110,7 @@ namespace MoulaCalc
             TotalResult.Content = "Sauvegarder Total\n" + Totalresult.ToString() + " €";
             long NbBillets = Result5 / 5 + Result10 / 10 + Result20 / 20 + Result50 / 50 + Result100 / 100 + Result200 / 200 + Result500 / 500;
             NbBilletsBtn.Content = "Sauvegarder l'encours :\n" + NbBillets;
+            UpdateRestant();
         }
 
         private void MenuItem_Exit_Click(object sender, RoutedEventArgs e)
@@ -171,6 +174,7 @@ namespace MoulaCalc
             TextBoxBillet500.Text = Billet500.ToString();
             reader.Close();
             databaseManager.closeDbConnection();
+            nbrCommandesTb.Text = Settings.Default.commandeNbr.ToString();
 
         }
 
@@ -190,30 +194,68 @@ namespace MoulaCalc
             if (TextBoxBillet5.Text == "")
             {
                 TextBoxBillet5.Text = "0";
+                UpdateRestant();
             }
             if (TextBoxBillet10.Text == "")
             {
                 TextBoxBillet10.Text = "0";
+                UpdateRestant();
             }
             if (TextBoxBillet20.Text == "")
             {
                 TextBoxBillet20.Text = "0";
+                UpdateRestant();
             }
             if (TextBoxBillet50.Text == "")
             {
                 TextBoxBillet50.Text = "0";
+                UpdateRestant();
             }
             if (TextBoxBillet100.Text == "")
             {
                 TextBoxBillet100.Text = "0";
+                UpdateRestant();
             }
             if (TextBoxBillet200.Text == "")
             {
                 TextBoxBillet200.Text = "0";
+                UpdateRestant();
             }
             if (TextBoxBillet500.Text == "")
             {
                 TextBoxBillet500.Text = "0";
+                UpdateRestant();
+            }
+        }
+
+        private void commandeNbr_changed(object sender, TextChangedEventArgs e)
+        {
+            if (nbrCommandesTb.Text != "")
+            {
+                Debug.WriteLine("Nombre de commandes : " + nbrCommandesTb.Text);
+                Settings.Default.commandeNbr = nbrCommandesTb.Text;
+                Settings.Default.Save();
+                UpdateRestant();
+
+
+            }
+        }
+
+        private void UpdateRestant()
+        {
+            if (nbrCommandesTb.Text != "")
+            {
+                int attendu = int.Parse(nbrCommandesTb.Text) * 550;
+                int restant = attendu - (int)Totalresult;
+                restantTb.Text = restant.ToString() + " €";
+            }
+        }
+
+        private void CommandNbr_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if(nbrCommandesTb.Text == "")
+            {
+                nbrCommandesTb.Text = Settings.Default.commandeNbr;
             }
         }
     }

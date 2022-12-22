@@ -31,6 +31,28 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal"
+                    Grid.Row="1"
+                    Grid.ColumnSpan="4"
+                    HorizontalAlignment="Right">
+            <TextBlock Text="Nombre de commandes"
+                       FontSize="18"
+                       Height="20"
+                       VerticalAlignment="Top"
+                       TextAlignment="Center"/>
+            <TextBox x:Name="nbrCommandesTb"
+                     FontSize="14"
+                     Margin="5,5,5,0"
+                     HorizontalContentAlignment="Center"
+                     VerticalContentAlignment="Center"
+                     VerticalAlignment="Top"
+                     Height="20"
+                     Width="50"
+                     MaxLength="2"
+                     TextChanged="commandeNbr_changed"
+                     PreviewTextInput="NumberValidationTextBox"
+                     LostFocus="CommandNbr_LostFocus" />
+        </StackPanel>
         <DockPanel Grid.Row="1" Height="Auto" TextBlock.TextAlignment="Center" HorizontalAlignment="Left" Grid.ColumnSpan="2" Margin="0,0,0,50">
             <Menu DockPanel.Dock="Top" Width="Auto">
                 <MenuItem Header="_Options" TextBlock.FontSize="18" >
@@ -61,9 +83,26 @@
                 <ColumnDefinition Width="50*" />
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition Height="*" />
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <Button x:Name="TotalResult" Grid.Column="1" Content="Sauvegarder Total\n0 €" Foreground="White" Click="SaveButton_Pressed"
+            <StackPanel Orientation="Horizontal"
+                        Grid.Row="0"
+                        Grid.ColumnSpan="2"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Margin="0,0,5,0">
+                <TextBlock Text="Restant :"
+                           FontSize="18"
+                           FontWeight="Bold"
+                           VerticalAlignment="Center"/>
+                <TextBlock x:Name="restantTb"
+                           Margin="5,0,0,0"
+                           FontSize="18"
+                           VerticalAlignment="Center"
+                           Text="1100 €"/>
+            </StackPanel>
+            <Button x:Name="TotalResult" Grid.Row="1" Grid.Column="1" Content="Sauvegarder Total\n0 €" Foreground="White" Click="SaveButton_Pressed"
                     Height="75" VerticalAlignment="Bottom">
             <Button.Style>
                 <Style TargetType="{x:Type Button}">
@@ -88,7 +127,7 @@
                 </Style>
             </Button.Style>
         </Button>
-            <Button x:Name="NbBilletsBtn" Grid.Column="0" Content="Sauvegarder l'encours :\n0" Foreground="White" Click="SaveNbBillets_Pressed"
+            <Button x:Name="NbBilletsBtn" Grid.Row="1" Grid.Column="0" Content="Sauvegarder l'encours :\n0" Foreground="White" Click="SaveNbBillets_Pressed"
                     Height="75" VerticalAlignment="Bottom">
                 <Button.Style>
                     <Style TargetType="{x:Type Button}">
