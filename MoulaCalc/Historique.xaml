@@ -127,6 +127,20 @@
                                        FontSize="22"
                                        Margin="5,0,0,0" />
                         </StackPanel>
+                        <StackPanel Grid.Row="3"
+                                    Orientation="Horizontal"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Bottom"
+                                    Margin="0,0,0,10">
+                            <TextBlock Text="Benefices :"
+                                       FontSize="22"
+                                       Margin="0,0,5,0"
+                                       FontWeight="Bold" />
+                            <TextBlock Text="0 €"
+                                       x:Name="benefLogTxt"
+                                       FontSize="22"
+                                       Margin="5,0,0,0" />
+                        </StackPanel>
                         <Button x:Name="Supprimer"
                                 TextBlock.FontSize="20"
                                 Content="Supprimer"

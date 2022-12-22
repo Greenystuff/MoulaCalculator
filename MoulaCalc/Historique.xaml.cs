@@ -18,6 +18,7 @@ using System.Windows.Controls.DataVisualization.Charting;
 using System.Collections;
 using System.ComponentModel;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 
 namespace MoulaCalc
 {
@@ -44,6 +45,7 @@ namespace MoulaCalc
                 ((AreaSeries)StatChart.Series[0]).ItemsSource = null;
                 HistoField.ItemsSource = null;
                 ((AreaSeries)StatChart.Series[0]).Refresh();
+                UpdateDataGrid();
             }
         }
 
@@ -88,13 +90,17 @@ namespace MoulaCalc
             ((AreaSeries)StatChart.Series[0]).Refresh();
 
             SQLiteDataReader reader = dbManager.executeSelectQuery("SELECT Total FROM AlloBank");
-            float totalBank = 0;
+            decimal totalBank = 0;
             while(reader.Read())
             {
-                totalBank += float.Parse(reader["Total"].ToString());
+                totalBank += decimal.Parse(reader["Total"].ToString());
             }
 
-            totalLogTxt.Text= totalBank.ToString() + " €";
+            decimal benefPourcentage = (100 - (55 * ((decimal)100 / 70))) / 100;
+            decimal benef = Math.Round(totalBank * benefPourcentage, 2);
+            Debug.WriteLine(benef.ToString());
+            totalLogTxt.Text = totalBank.ToString() + " €";
+            benefLogTxt.Text = benef.ToString() + " €";
             dbManager.closeDbConnection();
 
 
